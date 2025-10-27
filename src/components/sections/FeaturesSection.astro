@@ -1,0 +1,47 @@
+---
+import Container from '../core/Container.astro';
+---
+
+<Container>
+  <section class="features__section">
+    <div class="features__header">
+      <slot name="header"></slot>
+    </div>
+    <div class="features__grid">
+      <div class="features__item">
+        <slot name="feature-1"></slot>
+      </div>
+      <div class="features__item">
+        <slot name="feature-2"></slot>
+      </div>
+      <div class="features__item">
+        <slot name="feature-3"></slot>
+      </div>
+    </div>
+  </section>
+</Container>
+
+<style>
+  .features__section {
+    margin: var(--section-margin) auto;
+    text-align: center;
+  }
+  .features__header {
+    margin-bottom: 3rem;
+  }
+  .features__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    text-align: left;
+  }
+  .features__item {
+    padding: 1.5rem;
+  }
+
+  @media(max-width: 1024px) {
+    .features__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

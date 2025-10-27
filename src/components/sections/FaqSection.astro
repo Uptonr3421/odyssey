@@ -1,0 +1,47 @@
+---
+import Container from '../core/Container.astro';
+---
+
+<Container>
+  <section class="faq__section">
+    <div class="faq__header">
+      <slot name="header"></slot>
+    </div>
+    <div class="faq__list">
+      <div class="faq__item">
+        <slot name="faq-1"></slot>
+      </div>
+      <div class="faq__item">
+        <slot name="faq-2"></slot>
+      </div>
+      <div class="faq__item">
+        <slot name="faq-3"></slot>
+      </div>
+      <div class="faq__item">
+        <slot name="faq-4"></slot>
+      </div>
+    </div>
+  </section>
+</Container>
+
+<style>
+  .faq__section {
+    margin: var(--section-margin) auto;
+  }
+  .faq__header {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .faq__list {
+    max-width: 50rem;
+    margin: 0 auto;
+  }
+  .faq__item {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--theme-divider);
+  }
+  .faq__item:last-child {
+    border-bottom: none;
+  }
+</style>

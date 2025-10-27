@@ -1,91 +1,187 @@
 ---
-import { Container, FeatureCard } from '@components/odyssey-theme';
+import { Container } from '@components/odyssey-theme';
 
 import Layout from '../layouts/Page.astro';
 import HomeHeroSection from '../components/sections/heros/HomeHeroSection.astro';
+import FeaturesSection from '../components/sections/FeaturesSection.astro';
+import ValuePropsSection from '../components/sections/ValuePropsSection.astro';
+import FaqSection from '../components/sections/FaqSection.astro';
 ---
 
 <Layout>
 	<HomeHeroSection />
+
 	<Container>
-		<section class="feature-card__section">
-			<h2>Landing Pages</h2>
-			<p>
-				Use one of our landing pages to jumpstart your website or
-				ad campaign.
+		<section class="positioning__section">
+			<p class="positioning__text">
+				BespokeEthos delivers human-first AI systems that flow naturally through your organization. We design, program, and integrate automation that supports your team instead of replacing it — working code, not slide decks. Every workflow is tested, auditable, and fully owned by you.
 			</p>
-			<div class="feature-card__grid">
-				<FeatureCard href="/landing-pages/landing-1" title="Landing Page 1" imgSrc="/assets/images/home/screenshots/landing-1">
-				</FeatureCard>
-				<FeatureCard href="/landing-pages/landing-2" title="Landing Page 2" imgSrc="/assets/images/home/screenshots/landing-2">
-				</FeatureCard>
+		</section>
+	</Container>
+
+	<FeaturesSection>
+		<div slot="header">
+			<h2>We know what AI can — and can't — do, and when to apply the right tools.</h2>
+		</div>
+		<div slot="feature-1">
+			<h3>Intelligent Workflows</h3>
+			<p>Eliminate repetitive tasks and human error with automation that just works.</p>
+		</div>
+		<div slot="feature-2">
+			<h3>Secure, Tested Pipelines</h3>
+			<p>Direct integration with your existing systems — built for production from day one.</p>
+		</div>
+		<div slot="feature-3">
+			<h3>Human-in-the-Loop Design</h3>
+			<p>Predictability, transparency, and control at every step of the process.</p>
+		</div>
+	</FeaturesSection>
+
+	<ValuePropsSection>
+		<div slot="header">
+			<h2>Why Choose BespokeEthos</h2>
+		</div>
+		<div slot="prop-1">
+			<h3>Safety-First Architecture</h3>
+			<p>Ethical implementation and security built into every system we deliver.</p>
+		</div>
+		<div slot="prop-2">
+			<h3>Predictable Outputs</h3>
+			<p>Developer-friendly integrations that your team can trust and maintain.</p>
+		</div>
+		<div slot="prop-3">
+			<h3>Human-Centered Automation</h3>
+			<p>Designed with flow and function in mind — not just efficiency.</p>
+		</div>
+	</ValuePropsSection>
+
+	<Container>
+		<section class="trust__section">
+			<p class="trust__text">
+				<strong>Anthropic-trained AI instructor + Microsoft-backed founder</strong> — real engineering discipline, real guarantees.
+			</p>
+		</section>
+	</Container>
+
+	<Container>
+		<section class="feature-callout__section">
+			<h2>Production-Grade Automation</h2>
+			<div class="feature-callout__grid">
+				<div class="feature-callout__item">
+					<h3>Built for Small Business</h3>
+					<p>Production-grade automation pipelines designed to scale with your team.</p>
+				</div>
+				<div class="feature-callout__item">
+					<h3>Fully Documented</h3>
+					<p>Review, version, and own every system we build — complete transparency.</p>
+				</div>
+				<div class="feature-callout__item">
+					<h3>Real-World ROI</h3>
+					<p>Audit trails, rollback procedures, and guaranteed savings built in.</p>
+				</div>
 			</div>
 		</section>
 	</Container>
 
 	<Container>
-		<section class="feature-card__section">
-			<h2>Company Pages</h2>
-			<p>
-				Use one of our prebuilt company pages for your about page, contact page,
-				legal pages, blog posts, etc.
+		<section class="guarantee__section">
+			<p class="guarantee__text">
+				Fixed pricing, 100% code ownership, and a guaranteed $10K+ annual savings — or your assessment fee refunded.
 			</p>
-			<div class="feature-card__grid">
-				<FeatureCard href="/company/about" title="About Page" imgSrc="/assets/images/home/screenshots/about">
-				</FeatureCard>
-				<FeatureCard href="/company/contact" title="Contact Page" imgSrc="/assets/images/home/screenshots/contact">
-				</FeatureCard>
-				<FeatureCard href="/blog/" title="Blog Page" imgSrc="/assets/images/home/screenshots/blog">
-				</FeatureCard>
-				<FeatureCard
-					href="/blog/posts/remote-work-mental-health"
-					title="Blog Post"
-          imgSrc="/assets/images/home/screenshots/blog-post"
-				>
-				</FeatureCard>
-				<FeatureCard
-					href="/company/legal"
-					imgSrc="/assets/images/home/screenshots/legal"
-					title="Legal Page"
-				>
-				</FeatureCard>
-			</div>
 		</section>
 	</Container>
 
 	<Container>
-		<section class="feature-card__section">
-			<h2>Theme Pages</h2>
-			<p>Learn more about how to set up and use the Odyssey Theme.</p>
-			<div class="feature-card__grid">
-				<FeatureCard
-					href="/theme/get-started"
-					imgSrc="/assets/images/home/screenshots/get-started"
-					title="Get Started"
-				>
-				</FeatureCard>
-				<FeatureCard
-					href="/theme/style-guide"
-					imgSrc="/assets/images/home/screenshots/style-guide"
-					title="Style Guide"
-				>
-				</FeatureCard>
-			</div>
+		<section class="reassurance__section">
+			<p class="reassurance__text">
+				Big consultants think you're too small. We think you're perfect — and we build solutions that fit your team, budget, and risk tolerance.
+			</p>
 		</section>
 	</Container>
+
+	<FaqSection>
+		<div slot="header">
+			<h2>Frequently Asked Questions</h2>
+		</div>
+		<div slot="faq-1">
+			<h3>What kind of automation do you build?</h3>
+			<p>We create end-to-end systems that handle document processing, data reconciliation, content generation, and workflow automation — built around your real business needs.</p>
+		</div>
+		<div slot="faq-2">
+			<h3>Do we own what you build?</h3>
+			<p>Yes. 100% of the code, prompts, and systems belong to you. Everything is designed for clarity, portability, and independence.</p>
+		</div>
+		<div slot="faq-3">
+			<h3>How do you ensure safety and compliance?</h3>
+			<p>Every system includes human-in-the-loop checkpoints, logging, version control, and rollback options. All projects carry a 90-day fix guarantee.</p>
+		</div>
+		<div slot="faq-4">
+			<h3>Are your solutions scalable?</h3>
+			<p>Absolutely. We build with modular architecture so your systems can grow at your pace — flowing naturally with your operations.</p>
+		</div>
+	</FaqSection>
 </Layout>
 
 <style>
-	.feature-card__section {
+	.positioning__section {
+		margin: var(--section-margin) auto;
+		text-align: center;
+	}
+	.positioning__text {
+		max-width: 50rem;
+		margin: 0 auto;
+		font-size: 1.125rem;
+		line-height: 1.75;
+	}
+	.trust__section {
+		margin: var(--section-margin) auto;
+		text-align: center;
+		background: var(--theme-surface-1);
+		padding: 2rem;
+		border-radius: var(--theme-shape-radius);
+	}
+	.trust__text {
+		font-size: 1.125rem;
+	}
+	.feature-callout__section {
 		margin: var(--section-margin) auto;
 	}
-	.feature-card__grid {
+	.feature-callout__section h2 {
+		text-align: center;
+		margin-bottom: 2rem;
+	}
+	.feature-callout__grid {
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: var(--theme-grid-gap);
+		grid-template-columns: repeat(3, 1fr);
+		gap: 2rem;
+	}
+	.feature-callout__item {
+		padding: 1.5rem;
+	}
+	.guarantee__section {
+		margin: var(--section-margin) auto;
+		text-align: center;
+		background: var(--theme-primary);
+		color: var(--theme-on-primary);
+		padding: 2rem;
+		border-radius: var(--theme-shape-radius);
+	}
+	.guarantee__text {
+		font-size: 1.125rem;
+		font-weight: 600;
+	}
+	.reassurance__section {
+		margin: var(--section-margin) auto;
+		text-align: center;
+	}
+	.reassurance__text {
+		max-width: 40rem;
+		margin: 0 auto;
+		font-size: 1rem;
+		line-height: 1.75;
 	}
 	@media (max-width: 768px) {
-		.feature-card__grid {
+		.feature-callout__grid {
 			grid-template-columns: 1fr;
 		}
 	}

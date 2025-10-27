@@ -1,0 +1,46 @@
+---
+import Container from '../core/Container.astro';
+---
+
+<Container>
+  <section class="value-props__section">
+    <div class="value-props__header">
+      <slot name="header"></slot>
+    </div>
+    <div class="value-props__grid">
+      <div class="value-props__item">
+        <slot name="prop-1"></slot>
+      </div>
+      <div class="value-props__item">
+        <slot name="prop-2"></slot>
+      </div>
+      <div class="value-props__item">
+        <slot name="prop-3"></slot>
+      </div>
+    </div>
+  </section>
+</Container>
+
+<style>
+  .value-props__section {
+    margin: var(--section-margin) auto;
+  }
+  .value-props__header {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .value-props__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .value-props__item {
+    padding: 1rem;
+  }
+
+  @media(max-width: 768px) {
+    .value-props__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
