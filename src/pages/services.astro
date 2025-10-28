@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Page.astro';
+import { Container } from '@components/odyssey-theme';
+import TextSection from '../components/sections/TextSection.astro';
+import ThreeColumnTextSection from '../components/sections/ThreeColumnTextSection.astro';
+import TextCardSection from '../components/sections/TextCardSection.astro';
+
+const seo = {
+	title: 'Services | Bespoke Ethos',
+	description: 'AI consulting and automation services for small business',
+};
+---
+
+<Layout seo={seo}>
+	<Container>
+		<section class="services-hero__section">
+			<h1>Services</h1>
+			<p><strong>Automate Busywork, Amplify Revenue</strong></p>
+		</section>
+	</Container>
+
+	<TextCardSection surfaceNumber="1">
+		<h2>What We Offer</h2>
+		<ThreeColumnTextSection>
+			<div slot="column-1-body">
+				<h3>AI Sherpa Services</h3>
+				<p>Guides nontechnical owners through tool selection, integration, and governance so AI works where it matters most.</p>
+			</div>
+			
+			<div slot="column-2-body">
+				<h3>Workflow Automation</h3>
+				<p>End-to-end integration that connects chat models, data stores, and automation triggers into reliable business processes.</p>
+			</div>
+			
+			<div slot="column-3-body">
+				<h3>Small Business AI Integration</h3>
+				<p>Transform AI capability into usable, auditable workflows that small teams can run and maintain without an ML PhD.</p>
+			</div>
+		</ThreeColumnTextSection>
+	</TextCardSection>
+
+	<TextSection>
+		<h2>Core Philosophy</h2>
+		<p><strong>Augment, Do Not Replace</strong> — AI is a force multiplier for human judgment, not a substitute for it.</p>
+		<p><strong>Human in the Loop as a Default</strong> — Systems designed with human oversight produce safer, more useful outcomes and preserve accountability.</p>
+		<p><strong>Time Is the Ultimate ROI</strong> — The highest-value outcome is restored owner time to think, sell, and create.</p>
+		<p><strong>Built by Practitioners Who Understand Small Business</strong> — Solutions come from people who have worn the hats they automate.</p>
+	</TextSection>
+
+	<TextCardSection surfaceNumber="2">
+		<h2>Value Proposition</h2>
+		<p><strong>Automate Busywork, Amplify Revenue</strong> Remove repetitive tasks so owners focus on customers, products, and growth.</p>
+		<p><strong>Compete Without Heavier Payrolls</strong> Deliver the capabilities of a larger team through carefully engineered AI workflows.</p>
+		<p><strong>Proven Return on Time Invested</strong> Systems have historically repaid their cost many times over by reclaiming owner hours.</p>
+		<p><strong>Governed, Maintainable Automations</strong> Deployables include clear handoffs, audit trails, and human checkpoints to keep control in your hands.</p>
+	</TextCardSection>
+
+	<Container>
+		<section class="cta-section">
+			<h2>Ready to Get Started?</h2>
+			<p>Contact us to discuss how we can transform your business operations.</p>
+			<p><a href="mailto:contact@bespokeethos.com?subject=webcontact" class="cta-button">Contact Us</a></p>
+		</section>
+	</Container>
+</Layout>
+
+<style>
+	.services-hero__section {
+		margin: var(--section-margin) auto;
+		padding: 2rem 0;
+		text-align: center;
+	}
+	.cta-section {
+		margin: var(--section-margin) auto;
+		text-align: center;
+	}
+	.cta-button {
+		display: inline-block;
+		padding: 1rem 2rem;
+		background-color: var(--theme-primary);
+		color: var(--theme-on-primary);
+		text-decoration: none;
+		border-radius: var(--theme-button-border-radius);
+	}
+	.cta-button:hover {
+		background-color: var(--theme-primary-hover);
+	}
+</style>
+
