@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+Already <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alex's Story: Custom AI Tutor — Bespoke Ethos</title>
-    <meta name="description" content="The real story of how Bespoke Ethos built Molly, a custom AI statistics tutor for Alex Rand, an adult learner with learning disabilities and a brewer at Ore Dock Brewing in Marquette.">
-    <meta name="keywords" content="Custom AI, AI Tutor, Learning Disabilities, Ore Dock Brewing, Marquette, Statistics, Bespoke Ethos">
+    <title>Molly's Story: Real AI That Actually Helps — Bespoke Ethos</title>
+    <meta name="description" content="The real story of how we built Molly, a custom AI statistics tutor. This isn't a testimonial - it's a real person with real results.">
     <style>
-        /* Reset and Base Styles */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
@@ -19,1148 +18,550 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
-            color: #f5f5f5;
-            background-color: #212123;
+            color: #ffffff;
+            background: #0a0a0a;
             overflow-x: hidden;
+            cursor: none;
         }
 
-        /* Utility Classes */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        /* Custom Cursor with Magnetic Effect */
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            background: radial-gradient(circle, rgba(78, 205, 196, 0.8), rgba(78, 205, 196, 0.3));
+            box-shadow: 0 0 20px rgba(78, 205, 196, 0.6);
+            transition: transform 0.1s ease-out;
         }
 
-        .accent-color {
-            color: #f04d14;
-        }
-
-        .secondary-color {
-            color: #b0b0b0;
+        /* Liquid Morphing Blob - Original Effect */
+        #liquid-blob {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(60px);
+            opacity: 0.15;
         }
 
         /* Navigation */
         nav {
-            background-color: rgba(33, 33, 35, 0.95);
-            padding: 1.5rem 2rem;
             position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
+           完整的 width: 100%;
+            padding: 1rem;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            z-index: 1000;
         }
 
-        .nav-container {
+        .nav-content {
             max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .logo {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
             display: flex;
-            align-items: center;
-            text-decoration: none;
+            gap: 1.5rem;
+            flex-wrap: wrap;
         }
 
-        .logo img {
-            height: 50px;
-            width: auto;
-        }
-
-        .cta-button {
-            background-color: #f04d14;
-            color: #ffffff;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
+        .nav-links a {
+            color: #b8b8b8;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid #f04d14;
-            cursor: pointer;
+            transition: color 0.3s ease;
             font-size: 0.95rem;
+            cursor: pointer;
         }
 
-        .cta-button:hover {
-            background-color: transparent;
-            color: #f04d14;
+        .nav-links a:hover {
+            color: #4ecdc4;
+        }
+
+        /* Content */
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
         }
 
         /* Hero Section */
-        .hero {
+        .intro-hero {
             min-height: 100vh;
-            padding-top: 100px;
-            padding-bottom: 4rem;
-            background: linear-gradient(135deg, #212123 0%, #1a1a1c 100%);
             display: flex;
-            align-items: center;
+行政处罚 align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
             position: relative;
         }
 
-        .hero-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            width: 100%;
-        }
-
-        .hero-content {
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .hero-title {
-            font-size: 4.5rem; /* Slightly larger */
-            font-weight: 900; /* Bolder */
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            color: #ffffff;
-        }
-
-        .hero-title .highlight {
-            color: #f04d14;
-            font-style: italic;
-            text-shadow: 0 0 10px rgba(240, 77, 20, 0.5); /* Subtle glow */
-        }
-
-        .hero-subtitle {
-            font-size: 1.4rem; /* Slightly larger */
-            color: #b0b0b0;
-            margin-bottom: 2.5rem;
-            line-height: 1.7;
-            max-width: 500px;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background-color: #f04d14;
-            color: #ffffff;
-            padding: 1.1rem 2.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            border: 2px solid #f04d14;
-            display: inline-block;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(240, 77, 20, 0.3);
-        }
-
-        .btn-primary:hover {
-            background-color: #ff6b35;
-            border-color: #ff6b35;
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(240, 77, 20, 0.6);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: #f5f5f5;
-            padding: 1.1rem 2.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            display: inline-block;
-            cursor: pointer;
-        }
-
-        .btn-secondary:hover {
-            border-color: #f04d14;
-            color: #f04d14;
-            background-color: rgba(240, 77, 20, 0.1);
-        }
-
-        .hero-image {
-            position: relative;
-            z-index: 1;
-            animation: fadeInRight 0.8s ease-out;
-            transform: scale(1.05); /* Slightly bigger image */
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
-            filter: grayscale(10%); /* Subtle documentary feel */
-        }
-
-        /* Story Section - General */
-        .story-section {
-            padding: 6rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .story-header {
-            text-align: center;
-            margin-bottom: 4rem;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .story-tag {
-            display: inline-block;
-            background-color: rgba(240, 77, 20, 0.15);
-            color: #f04d14;
-            padding: 0.6rem 1.2rem;
-            border-radius: 25px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(240, 77, 20, 0.4);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .story-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            color: #ffffff;
-        }
-
-        .story-intro {
-            font-size: 1.2rem;
-            color: #b0b0b0;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        /* Section 1: The Problem */
-        .problem-section {
-            background-color: #1a1a1c;
-        }
-
-        .problem-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .problem-block {
-            padding: 2rem;
-            border-left: 4px solid #f04d14;
-            background-color: #212123;
-            border-radius: 4px;
-            opacity: 0;
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-            transform: translateY(20px);
-        }
-
-        .problem-block.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .problem-block h3 {
-            font-size: 1.8rem;
-            color: #ffffff;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .problem-block p {
-            color: #b0b0b0;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-        }
-
-        .problem-list {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .problem-list li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.75rem;
-            color: #f5f5f5;
-            font-weight: 500;
-        }
-
-        .problem-list li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: #f04d14;
-            font-size: 1.2rem;
-            line-height: 1;
-        }
-
-        /* Section 2: The Turning Point */
-        .turning-point-section {
-            background-color: #212123;
-        }
-        
-        .turning-point-content {
+        .intro-content {
             max-width: 900px;
-            margin: 0 auto;
             text-align: center;
+            animation: fadeInUp 1s ease-out;
+            padding: 8rem 1rem 3rem;
         }
 
-        .turning-point-content h3 {
-            font-size: 2rem;
-            color: #ffffff;
+        .intro-content h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 5s ease infinite;
+            line-height: 1.2;
+        }
+
+        .intro-content p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: #b8b8b8;
+            line-height: 1.8;
             margin-bottom: 1.5rem;
-            font-weight: 700;
         }
 
-        .turning-point-content p {
+        .highlight {
+            color: #4ecdc4;
+            font-weight: 600;
+        }
+
+        /* Story Section */
+        .story-section {
+            padding: 3rem 1rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .story-card {
+            background: rgba(255, 255, 证据, 0.03);
+            backdrop-filter: blur(破壞 20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 2rem;
+            margin-bottom: 2 предыдущий;
+            animation: fadeIn 0.8s ease-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(78, 205, 196, 0.2);
+            border-color: rgba(78, 205, 196, 0.3);
+        }
+
+        .story-card h2 {
+            font-size: clamp(1.8rem, 4vw, 2.3rem);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.3;
+        }
+
+        .story-card p {
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            color: #d0d0d0;
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+
+        /* Image Placeholder */
+        .molly-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 16px;
+            margin: 2rem 0;
+            box-shadow: 0 20px 60px rgba(78, 205, 196, 0.3);
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.2), rgba(69, 183, 209, 0.2));
+            padding: 3rem;
+            text-align: center;
+            color: #4ecdc4;
             font-size: 1.2rem;
-            color: #b0b0b0;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .molly-intro {
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.1), rgba(69, 183, 209, 0.1));
+            border-left: 4px solid #4ecdc4;
+            padding: 2rem 1.5rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .molly-intro h3 {
+            font-size: clamp(1.5rem, 3vw, 1.8rem);
+            margin-bottom: 1rem;
+            color: #4ecdc4;
+        }
+
+        .molly-intro p {
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            color: #e0e0e0;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* Photo Request Section */
+        .photo-request {
+            text-align: center;
+            padding: 3rem 1rem;
+            max-width: 800px;
+            margin: 事关auto;
+        }
+
+        .photo-request h2 {
+            font-size: clamp(1.8rem, 4vw, 2.2rem);
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+
+        .photo-request p {
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            color: #b8b8b8;
             line-height: 1.8;
             margin-bottom: 2rem;
         }
 
-        .consultation-box {
-            background-color: #1a1a1c;
-            padding: 2rem;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: left;
-            margin-top: 3rem;
-            opacity: 0;
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-            transform: scale(0.95);
+        .photo-request-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            color: #ffffff;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 30px rgba(78, 205, 196, 0.3);
+            cursor: pointer;
         }
 
-        .consultation-box.is-visible {
-            opacity: 1;
-            transform: scale(1);
+        .photo-request-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(78,听了196, 0.4);
         }
 
-        .consultation-box h4 {
-            color: #f04d14;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .consultation-list {
+        .photo-request ul {
             list-style: none;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            padding-left: 0;
+            text-align: left;
+            max-width: 600px;
+            margin: 2rem auto;
         }
 
-        .consultation-list li {
-            color: #f5f5f5;
-            position: relative;
+        .photo-request li {
+            font-size: clamp(1rem, 2.5vw, 1.05rem);
+            color: #d0d0d0;
+            line-height: 2;
+            margin-bottom: 0.8rem;
             padding-left: 1.5rem;
-            font-size: 1.05rem;
+            position: relative;
         }
 
-        .consultation-list li::before {
+        .photo-request li::before {
             content: '✓';
             position: absolute;
             left: 0;
-            color: #f04d14;
-            font-weight: 700;
-        }
-
-        /* Section 3: Meet Molly */
-        .molly-section {
-            background-color: #1a1a1c;
-        }
-
-        .molly-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .molly-feature {
-            background-color: #212123;
-            padding: 2rem;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .molly-feature.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .molly-feature:hover {
-            border-color: #f04d14;
-            box-shadow: 0 10px 30px rgba(240, 77, 20, 0.2);
-            transform: translateY(-5px);
-        }
-
-        .molly-feature h4 {
-            font-size: 1.3rem;
-            color: #f04d14;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .molly-feature p {
-            color: #b0b0b0;
-            line-height: 1.6;
-        }
-
-        /* Section 4: How It Works */
-        .how-it-works-section {
-            background-color: #212123;
-        }
-
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .process-step {
-            text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .process-step.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .process-step-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
-            background-color: #f04d14;
-            color: #ffffff;
-            border-radius: 50%;
-            font-weight: 800;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 0 0 0 rgba(240, 77, 20, 0.7);
-            animation: pulse-ring 2s infinite;
-        }
-        
-        .process-step:nth-child(2) .process-step-number { animation-delay: 0.2s; }
-        .process-step:nth-child(3) .process-step-number { animation-delay: 0.4s; }
-
-        @keyframes pulse-ring {
-            0% {
-                box-shadow: 0 0 0 0 rgba(240, 77, 20, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 10px rgba(240, 77, 20, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(240, 77, 20, 0);
-            }
-        }
-
-        .process-step h4 {
-            font-size: 1.5rem;
-            color: #ffffff;
-            margin-bottom: 1rem;
-        }
-
-        .process-step p {
-            color: #b0b0b0;
-            line-height: 1.7;
-            text-align: left;
-            padding: 0 1rem;
-        }
-
-        .process-total {
-            text-align: center;
-            margin-top: 4rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #f04d14;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            opacity: 0;
-            transition: opacity 1s ease-out;
-        }
-
-        .process-total.is-visible {
-            opacity: 1;
-        }
-
-        /* Section 5: The Results */
-        .results-section {
-            background-color: #1a1a1c;
-        }
-
-        .results-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-top: 3rem;
-        }
-
-        .results-block {
-            opacity: 0;
-            transform: translateX(-20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .results-block:nth-child(2) {
-            transform: translateX(20px);
-        }
-
-        .results-block.is-visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .results-block h3 {
-            font-size: 2rem;
-            color: #ffffff;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .results-block p {
-            color: #b0b0b0;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-        }
-
-        .stats-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .stats-table th, .stats-table td {
-            padding: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: left;
-        }
-
-        .stats-table th {
-            color: #f04d14;
-            font-weight: 700;
-            background-color: rgba(240, 77, 20, 0.2);
-        }
-
-        .stats-table td {
-            color: #f5f5f5;
-            background-color: #212123;
-        }
-
-        .stats-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        /* Section 6: In Alex's Words */
-        .quote-section {
-            background-color: #212123;
-            padding: 6rem 0;
-            text-align: center;
-        }
-
-        .quote-box {
-            max-width: 900px;
-            margin: 0 auto;
-            border-left: 5px solid #f04d14;
-            padding-left: 2rem;
-            text-align: left;
-            opacity: 0;
-            transition: opacity 1s ease-out;
-        }
-
-        .quote-box.is-visible {
-            opacity: 1;
-        }
-
-        .quote-text {
-            font-size: 1.8rem;
-            color: #ffffff;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            font-weight: 500;
-            font-style: italic;
-        }
-
-        .quote-author {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #f04d14;
-        }
-
-        .quote-author span {
-            display: block;
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: #b0b0b0;
-            margin-top: 0.5rem;
-        }
-
-        /* Section 7: What This Demonstrates */
-        .demonstrates-section {
-            background-color: #1a1a1c;
-        }
-
-        .demonstrates-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .demonstrates-point {
-            background-color: #212123;
-            padding: 2rem;
-            border-radius: 8px;
-            border-left: 4px solid #f04d14;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .demonstrates-point.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .demonstrates-point h4 {
-            font-size: 1.3rem;
-            color: #f04d14;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .demonstrates-point p {
-            color: #b0b0b0;
-            line-height: 1.6;
-        }
-
-        /* Section 8: Final CTA */
-        .cta-final {
-            background: linear-gradient(135deg, #212123 0%, #1a1a1c 100%);
-            padding: 6rem 0;
-            text-align: center;
-        }
-
-        .cta-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .cta-title {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta-subtitle {
-            font-size: 1.1rem;
-            color: #b0b0b0;
-            margin-bottom: 2.5rem;
-            line-height: 1.7;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #0f0f10;
-            padding: 3rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-        }
-
-        .footer-logo img {
-            height: 40px;
-            width: auto;
-            margin-bottom: 1rem;
-        }
-
-        .footer-text {
-            color: #b0b0b0;
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        .footer-links a {
-            color: #b0b0b0;
-            text-decoration: none;
-            margin: 0 1rem;
-            transition: color 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .footer-links a:hover {
-            color: #f04d14;
-        }
-
-        .footer-bottom {
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #666;
-            font-size: 0.85rem;
-            margin-top: 1.5rem;
+            color: #4ecdc4;
+            font-weight: bold;
         }
 
         /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(40px);
+                transform: translateY(30px);
             }
             to {
-                opacity: 1;
+                opacity Pessoa;
                 transform: translateY(0);
             }
         }
 
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { Savannah: 1; }
         }
 
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .hero-title {
-                font-size: 3rem;
-            }
-
-            .problem-grid, .results-grid, .molly-grid, .demonstrates-grid, .consultation-list {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .story-title {
-                font-size: 2.5rem;
-            }
-
-            .process-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .process-step p {
-                text-align: center;
-                padding: 0;
-            }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Mobile optimizations */
         @media (max-width: 768px) {
-            .container {
-                padding: 0 1rem;
-            }
-
-            .story-title {
-                font-size: 2rem;
-            }
-
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .cta-button {
-                display: none; /* Hide CTA button in nav for small screens */
-            }
-
-            .nav-container {
-                justify-content: center;
+            body {
+                cursor: default;
             }
             
-            .cta-buttons {
-                flex-direction: column;
+            .custom-cursor {
+                display: none;
             }
 
-            .btn-primary, .btn-secondary {
-                width: 100%;
-                text-align: center;
+            .story-card {
+                padding: 1.5rem;
             }
-
-            .quote-box {
-                padding-left: 1rem;
-            }
-
-            .quote-text {
-                font-size: 1.4rem;
+            
+            .intro-content {
+                padding: 6rem 1rem 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    
+    <!-- Liquid Morphing Blob Background -->
+    <canvas id="liquid-blob"></canvas>
+    
     <nav>
-        <div class="nav-container">
-            <a href="#home" class="logo" aria-label="Bespoke Ethos Home">
-                <img src="assets/logo.png" alt="Bespoke Ethos Logo" />
-            </a>
-            <a href="#cta" class="cta-button">Let's Talk</a>
+        <div class="nav-content">
+            <a href="https://bespokeethos.com" class="logo">Bespoke Ethos</a>
+            <div class="nav-links">
+                <a href="https://bespokeethos.com">Home</a>
+                <a href="https://bespokeethos.com/services">Services</a>
+                <a href="https://bespokeethos.com/company/contact">Contact</a>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    We Built <span class="highlight">Molly</span> for Alex
-                </h1>
-                <p class="hero-subtitle">
-                    Custom AI statistics tutor for an adult learner with learning disabilities returning to college. Not templated. Not generic. Built for one person—because we took the time to understand how he learns.
+    <div class="content-wrapper">
+        <section class="intro-hero">
+            <div class="intro-content">
+                <h1>A Special Introduction</h1>
+                <p>
+                    Hey Molly, Max and I got a little bored vibe-coding while making our new website.
                 </p>
-                <div class="hero-cta">
-                    <a href="#problem" class="btn-primary">Read Alex's Story</a>
-                    <a href="#cta" class="btn-secondary">Could This Work for You?</a>
-                </div>
+                <p>
+                    So we did a bit of <span class="highlight">market research</span>, and turns out that <span class="highlight">if we can get actual people</span> who we've helped with real pictures, real stories, and real solutions—it can actually help our business quite a bit more than just making crap up like everyone else does.
+                </p>
+                <p>
+                    My hope is that you'd be willing to let me publish your story—maybe provide a few pictures of you chatting with Molly. It would really move the needle for us.
+                </p>
             </div>
+        </section>
 
-            <div class="hero-image">
-                <!-- Placeholder for hero-profile-view.png. Using logo as a temporary placeholder. -->
-                <img src="assets/logo.png" alt="Black and white profile shot of Alex Rand, the client" loading="eager">
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 1: The Problem -->
-    <section class="story-section problem-section" id="problem">
-        <div class="container">
-            <div class="story-header">
-                <span class="story-tag">The Real Struggle</span>
-                <h2 class="story-title">The Problem: Statistics Was a Nightmare</h2>
-                <p class="story-intro">
-                    Alex, an adult learner with learning disabilities, was going back to college to finish his degree. Statistics was required—and it was a nightmare.
+        <section class="story-section">
+            <div class="story-card">
+                <h2>Why Real Stories Matter</h2>
+                <p>
+                    In an industry full of generic testimonials and fake success stories, we're taking a different approach. Instead of making stuff up or using stock photos, we're documenting the real impact of custom AI solutions on real people's lives.
+                </p>
+                <p>
+                    Molly's story isn't about inflated numbers or marketing buzzwords. It's about a real person who needed real help, and how we built something that actually worked.
                 </p>
             </div>
 
-            <div class="problem-grid scroll-animate">
-                <div class="problem-block">
-                    <h3>The Learning Gap</h3>
-                    <p>Traditional tutoring was expensive ($30-50/hr), time-limited, and didn't click. Generic AI assistants gave cookie-cutter answers disconnected from his real life as a brewer at **Ore Dock Brewing Company in Marquette, Michigan**.</p>
-                    <p>He needed 24/7 help but couldn't afford ongoing tutoring. Learning disabilities made traditional "one-size-fits-all" approaches ineffective.</p>
-                </div>
-                <div class="problem-block">
-                    <h3>What Didn't Work</h3>
-                    <ul class="problem-list">
-                        <li>**Generic AI:** Cookie-cutter answers, abstract concepts.</li>
-                        <li>**Textbooks:** Examples felt meaningless and disconnected.</li>
-                        <li>**Traditional Tutors:** Expensive, time-limited, and didn't adapt to his learning style.</li>
-                        <li>**One-Size-Fits-All:** Ineffective for his specific learning disabilities.</li>
-                    </ul>
-                </div>
+            <div class="molly-image">
+                📸 Molly & Alex Conversation Screenshots Coming Soon
             </div>
-        </div>
-    </section>
 
-    <!-- Section 2: The Turning Point -->
-    <section class="story-section turning-point-section" id="turning-point">
-        <div class="container turning-point-content">
-            <div class="story-header">
-                <span class="story-tag">The Human Touch</span>
-                <h2 class="story-title">The Turning Point: One Hour of Listening</h2>
+            <div class="molly-intro">
+                <h3>Meet Molly: Your AI Statistics Tutor</h3>
+                <p>
+                    We built Molly specifically for Alex Rand, a brewer at Ore Dock Brewing in Marquette. Alex needed help with statistics coursework as an adult learner, and traditional learning methods weren't cutting it due to his learning disabilities.
+                </p>
+                <p>
+                    So we built a custom AI tutor—tailored to Alex's learning style, pace, and needs. No cookie-cutter solution. No one-size-fits-all approach. Just real AI, solving a real problem, for a real person.
+                </p>
             </div>
-            
-            <p>Alex reached out with a simple question: "Can you build me an AI tutor that actually gets how I learn?"</p>
-            <p>No pitch. No templates. Just **one hour on the phone**, talking. That's where the magic happened. We didn't automate understanding—we focused on it.</p>
 
-            <div class="consultation-box scroll-animate">
-                <h4>We talked about:</h4>
-                <ul class="consultation-list">
-                    <li>How Alex learns best (real-world comparisons, not abstract theory)</li>
-                    <li>His work as a brewer at Ore Dock Brewing Company</li>
-                    <li>His life in Marquette, Michigan</li>
-                    <li>His sense of humor and communication style</li>
-                    <li>How his learning disabilities affect traditional study methods</li>
+            <div class="story-card">
+                <h2>The Difference</h2>
+                <p>
+                    <strong>Generic Testimonials:</strong> "This service changed my life! ★★★★★"
+                </p>
+                <p>
+                    <strong>Real Molly Story:</strong> A real case study with real conversations, real results, and real photos documenting the journey.
+                </p>
+                <p>
+                    When potential clients see that we don't just talk about AI—we actually build it for real people with real problems—it changes everything. They see authenticity. They see proof. They see that we're not just another company selling snake oil.
+                </p>
+            </div>
+
+            <div class="story-card">
+                <h2>What We're Asking</h2>
+                <p>
+                    If you're comfortable, Molly, we'd love to:
+                </p>
+                <ul class="photo-request">
+                    <li>Share your experience using Molly</li>
+                    <li>Provide a few screenshots of your conversations with Molly</li>
+                    <li>Let us highlight how it's helped with your statistics coursework</li>
+                    <li>Show potential clients what real AI solutions look like</li>
                 </ul>
-            </div>
-            <p style="margin-top: 2rem;">Then we built **Molly**—a custom AI statistics tutor trained specifically on Alex's learning style, industry background, and the way his brain works.</p>
-        </div>
-    </section>
-
-    <!-- Section 3: Meet Molly -->
-    <section class="story-section molly-section" id="molly">
-        <div class="container">
-            <div class="story-header">
-                <span class="story-tag">The Custom Solution</span>
-                <h2 class="story-title">Meet Molly: The Custom AI Tutor</h2>
-                <p class="story-intro">
-                    Molly isn't ChatGPT. She's a custom-trained Gemini Gem built for **one person: Alex**. She teaches statistics **the way Alex's brain works**.
+                <p style="margin-top: 2rem;">
+                    No pressure, no obligation. Just an honest story that might help other people like you find solutions that actually work.
                 </p>
             </div>
+        </section>
 
-            <div class="molly-grid scroll-animate">
-                <div class="molly-feature">
-                    <h4>Brewery-Themed Explanations</h4>
-                    <p>When Alex asks about probability, Molly explains it using batch fermentation data. Hypothesis testing? Quality control scenarios from the brewery floor. Statistics finally makes sense through his real-world context.</p>
-                </div>
-                <div class="molly-feature">
-                    <h4>Built for Alex's Learning Style</h4>
-                    <p>Molly knows Alex needs real-world context first, then theory. She knows his sense of humor. She adapts to his learning disabilities, breaking down complex concepts into digestible pieces until they click.</p>
-                </div>
-                <div class="molly-feature">
-                    <h4>24/7 Availability & Zero Judgment</h4>
-                    <p>No scheduling. No waiting. No anxiety around asking "dumb questions." Alex studies when it works for him, and Molly patiently repeats explanations in different ways until he understands.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 4: How It Works -->
-    <section class="story-section how-it-works-section" id="how-it-works">
-        <div class="container">
-            <div class="story-header">
-                <span class="story-tag">The Process</span>
-                <h2 class="story-title">Total Investment: 3 Hours of Work</h2>
-            </div>
-
-            <div class="process-grid scroll-animate">
-                <div class="process-step">
-                    <div class="process-step-number">1</div>
-                    <h4>Deep Discovery</h4>
-                    <p>1 hour consultation with Alex to understand his learning style, industry knowledge (brewing), real-world context (Marquette), and learning disability accommodations.</p>
-                </div>
-                <div class="process-step">
-                    <div class="process-step-number">2</div>
-                    <h4>Custom AI Build</h4>
-                    <p>2 hours to build and deploy the Gemini Gem (Molly), embedding all the custom knowledge, personality, and learning accommodations.</p>
-                </div>
-                <div class="process-step">
-                    <div class="process-step-number">3</div>
-                    <h4>Deploy & Iterate</h4>
-                    <p>Ongoing 24/7 access on mobile/desktop. Continuous learning from Alex's questions and ongoing refinement based on what works best for him.</p>
-                </div>
-            </div>
-            
-            <p class="process-total scroll-animate">Total investment: **3 hours** for ongoing 24/7 value.</p>
-        </div>
-    </section>
-
-    <!-- Section 5: The Results -->
-    <section class="story-section results-section" id="results">
-        <div class="container">
-            <div class="story-header">
-                <span class="story-tag">The Outcome</span>
-                <h2 class="story-title">The Results: Confidence and Clarity</h2>
-            </div>
-
-            <div class="results-grid scroll-animate">
-                <div class="results-block">
-                    <h3>Quantitative Results</h3>
-                    <table class="stats-table">
-                        <thead>
-                            <tr>
-                                <th>Metric</th>
-                                <th>Before Molly</th>
-                                <th>After Molly</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Tutor Availability</td>
-                                <td>5-10 hrs/week</td>
-                                <td>24/7 on-demand</td>
-                            </tr>
-                            <tr>
-                                <td>Ongoing Cost</td>
-                                <td>$30-50/hr</td>
-                                <td>$0/hr</td>
-                            </tr>
-                            <tr>
-                                <td>Concept Examples</td>
-                                <td>Generic textbook</td>
-                                <td>100% brewery-industry</td>
-                            </tr>
-                            <tr>
-                                <td>Time to Click</td>
-                                <td>2-3 sessions</td>
-                                <td>1-2 AI conversations</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="results-block">
-                    <h3>Qualitative Results</h3>
-                    <ul class="problem-list">
-                        <li>Statistics finally makes sense through real-world context.</li>
-                        <li>Alex's confidence in math-heavy content visibly increased.</li>
-                        <li>No more anxiety around scheduling tutors or asking "dumb questions."</li>
-                        <li>Molly adapts explanations based on follow-up questions.</li>
-                        <li>Alex has his mental space back to focus on learning, not fighting his learning style.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 6: In Alex's Words -->
-    <section class="quote-section" id="testimonial">
-        <div class="container">
-            <div class="story-header">
-                <span class="story-tag">The Testimonial</span>
-                <h2 class="story-title">In Alex's Words</h2>
-            </div>
-            <div class="quote-box scroll-animate">
-                <p class="quote-text">
-                    "I needed statistics help, but generic tutoring didn't work. Bespoke Ethos spent real time understanding how I learn, what my background is, what makes sense to me. The custom AI tutor they built—Molly—explains everything through brewery examples from my actual job at Ore Dock Brewing in Marquette. It's not just helpful—it's mine. Molly gets me. Worth every penny."
-                </p>
-                <p class="quote-author">
-                    — Alex Rand
-                    <span>College Student & Brewer, Ore Dock Brewing Company, Marquette, MI</span>
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 7: What This Demonstrates -->
-    <section class="story-section demonstrates-section" id="demonstrates">
-        <div class="container">
-            <div class="story-header">
-                <span class="story-tag">The Takeaway</span>
-                <h2 class="story-title">What This Demonstrates</h2>
-            </div>
-
-            <div class="demonstrates-grid scroll-animate">
-                <div class="demonstrates-point">
-                    <h4>Deep Customization Works</h4>
-                    <p>A generic "statistics tutor" AI is useless. Understanding the **person** first, then building the AI around them, creates something truly valuable.</p>
-                </div>
-                <div class="demonstrates-point">
-                    <h4>Human-in-the-Loop is the Point</h4>
-                    <p>The 1-hour consultation was essential. That's where the magic happens. You can't automate understanding what someone needs.</p>
-                </div>
-                <div class="demonstrates-point">
-                    <h4>Context is Everything</h4>
-                    <p>The same statistics concept explained with brewery examples vs. textbook examples creates completely different learning outcomes.</p>
-                </div>
-                <div class="demonstrates-point">
-                    <h4>Accessibility Through AI</h4>
-                    <p>Custom AI tutoring can meet people where traditional approaches fail (cost, scheduling, learning style fit, disabilities).</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 8: Final CTA -->
-    <section class="cta-final" id="cta">
-        <div class="container cta-container">
-            <h2 class="cta-title">Could This Work for You?</h2>
-            <p class="cta-subtitle">
-                If you have a unique need, a specific workflow, or a situation where "one-size-fits-all" solutions have failed you, custom AI might be the answer. It starts with understanding.
-            </p>
-            <div class="cta-buttons">
-                <a href="mailto:hello@bespokeethos.com" class="btn-primary">Let's Talk: Schedule a Discovery Call</a>
-                <a href="#home" class="btn-secondary">Read Alex's Story Again</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-logo">
-                <img src="assets/logo.png" alt="Bespoke Ethos" />
-            </div>
-            <p class="footer-text">
-                Human-in-the-Loop AI for Real People | Cleveland, Ohio
-            </p>
-            <div class="footer-links">
-                <a href="mailto:hello@bespokeethos.com">hello@bespokeethos.com</a>
-                <a href="#home">Back to Top</a>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Bespoke Ethos. All rights reserved. | Alex/Molly Case Study Demo</p>
-            </div>
-        </div>
-    </footer>
+        <section class="photo-request">
+            <h2>Ready to Help?</h2>
+            <p>If you're comfortable sharing your story, we'd be incredibly grateful. Your real experience could help countless others discover what's possible with custom AI.</p>
+            <a href="mailto:contact@bespokeethos.com?subject=Molly's Story&body=Hi Upton, I'd love to share my Molly story!" class="photo-request-cta">Share Your Molly Story</a>
+        </section>
+    </div>
 
     <script>
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href !== '#' && document.querySelector(href)) {
-                    e.preventDefault();
-                    document.querySelector(href).scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+        // Magnetic Custom Cursor
+        const cursor = document.querySelector('.custom-cursor');
+        let cursorX = 0;
+        let cursorY = 0;
+        let blobX = 0;
+        let blobY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            cursorX = e.clientX;
+            cursorY = e.clientY;
+            cursor.style.left = cursorX + 'px technical cursor.style.top = cursorY + 'px';
         });
 
-        // Intersection Observer for Scroll Animations
-        const scrollAnimateElements = document.querySelectorAll('.scroll-animate > *');
+        // Liquid Blob - Original Physics-Based Morphing Effect
+        const blobCanvas = document.getElementById('liquid-blob');
+        const blobCtx = blobCanvas.getContext('2d');
+        
+        function resizeBlob() {
+            blobCanvas.width = window.innerWidth;
+            blobCanvas.height = window.innerHeight;
+        }
+        resizeBlob();
+        window.addEventListener('resize', resizeBlob);
 
+        const blobPoints = [];
+        const numPoints = 20;
+        let time = 0;
+
+        class BlobPoint {
+            constructor(angle) {
+                this.baseAngle = angle;
+                this.angle = angle;
+                this.radius = 250;
+                this.variation = Math.random() * 50 + 20;
+            }
+
+            update(mouseX, mouseY) {
+                time += 0.005;
+                
+                // Calculate position with noise
+                const noiseX = Math.sin(this.angle + time * 0.5) * this.variation;
+                const noiseY = Math.cos(this.angle + time * 0.7) * this.variation;
+                
+                // Magnetic attraction to cursor
+                const centerX = window.innerWidth / 2;
+                const centerY = window.innerHeight / 2;
+                const targetX = centerX + (mouseX - centerX) * 0.3;
+                const targetY = centerY + (mouseY - centerY) * 0.3;
+                
+                // Calculate radial position with attraction
+                const angleFromCenter = Math.atan2(targetY - centerY, targetX - centerX);
+                const distanceFromCenter = Math.hypot(targetX - centerX, targetY - centerY);
+                
+                this.x = targetX + Math.cospsin(this.angle + noiseX) * this.radius;
+                this.y = targetY + Math.sin(this.angle + noiseY) * this.radius;
+                
+                this.angle += 0.01;
+            }
+        }
+
+        // Initialize blob points
+        for (let i = 0; i < numPoints; i++) {
+            blobPoints.push(new BlobPoint((i / numPoints) * Math.PI * 2));
+        }
+
+        function drawBlob() {
+            blobCtx.clearRect(0, 0, blobCanvas.width, blobCanvas.height);
+            
+            // Follow cursor with physics
+            const dx = cursorX - blobX;
+            const dy = cursorY - blobY;
+            blobX += dx * 0.05; // Smooth interpolation
+            blobY += dy * 0.05;
+
+            // Update all points
+            blobPoints.forEach(point => point.update(blobX, blobY));
+
+            // Draw with gradient
+            const gradient = blobCtx.createLinearGradient(0, 0, blobCanvas.width, blobCanvas.height);
+            gradient.addColorStop(0, '#4ecdc4');
+            gradient.addColorStop(1, '#45b7d1');
+            
+            blobCtx.fillStyle = gradient;
+            blobCtx.beginPath();
+            
+            // Draw smooth blob
+            blobCtx.moveTo(blobPoints[0].x, blobPoints[0].y);
+            for (let i = 0; i < blobPoints.length; i++) {
+                const curr = blobPoints[i];
+                const next = blobPoints[(i + 1) % blobPoints.length];
+                const midX = (curr.x + next.x) / 2;
+                const midY = (curr.y + next.y) / 2;
+                
+                if (i === 0) {
+                    blobCtx.moveTo(midX, midY);
+                } else {
+                    blobCtx.quadraticCurveTo(curr.x, curr.y, midX, midY);
+                }
+            }
+            blobCtx.closePath();
+            blobCtx.fill();
+
+            requestAnimationFrame(drawBlob);
+        }
+
+        drawBlob();
+
+        // Scroll animations
         const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver((entries, observer) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out';
                 }
             });
         }, observerOptions);
 
-        scrollAnimateElements.forEach(el => {
-            el.style.opacity = '0';
-            observer.observe(el);
-        });
-
-        // Specific delay for Molly features
-        document.querySelectorAll('.molly-feature').forEach((el, index) => {
-            el.style.transitionDelay = `${index * 0.1}s`;
-        });
-        
-        // Specific delay for Demonstrates points
-        document.querySelectorAll('.demonstrates-point').forEach((el, index) => {
-            el.style.transitionDelay = `${index * 0.1}s`;
-        });
-
-        // Specific delay for Process steps
-        document.querySelectorAll('.process-step').forEach((el, index) => {
-            el.style.transitionDelay = `${index * 0.1}s`;
+        document.querySelectorAll incompletestory-card').forEach(card => {
+            observer.observe(card);
         });
     </script>
 </body>
