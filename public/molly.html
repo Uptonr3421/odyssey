@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-Already <meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Molly's Story: Real AI That Actually Helps — Bespoke Ethos</title>
     <meta name="description" content="The real story of how we built Molly, a custom AI statistics tutor. This isn't a testimonial - it's a real person with real results.">
@@ -23,23 +24,9 @@ Already <meta charset="UTF-8">
             color: #ffffff;
             background: #0a0a0a;
             overflow-x: hidden;
-            cursor: none;
         }
 
-        /* Custom Cursor with Magnetic Effect */
-        .custom-cursor {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 10000;
-            background: radial-gradient(circle, rgba(78, 205, 196, 0.8), rgba(78, 205, 196, 0.3));
-            box-shadow: 0 0 20px rgba(78, 205, 196, 0.6);
-            transition: transform 0.1s ease-out;
-        }
-
-        /* Liquid Morphing Blob - Original Effect */
+        /* Liquid Morphing Blob Background - Original Effect */
         #liquid-blob {
             position: fixed;
             width: 100%;
@@ -55,7 +42,7 @@ Already <meta charset="UTF-8">
         /* Navigation */
         nav {
             position: fixed;
-           完整的 width: 100%;
+            width: 100%;
             padding: 1rem;
             background: rgba(10, 10, 10, 0.9);
             backdrop-filter: blur(20px);
@@ -94,7 +81,6 @@ Already <meta charset="UTF-8">
             text-decoration: none;
             transition: color 0.3s ease;
             font-size: 0.95rem;
-            cursor: pointer;
         }
 
         .nav-links a:hover {
@@ -111,7 +97,7 @@ Already <meta charset="UTF-8">
         .intro-hero {
             min-height: 100vh;
             display: flex;
-行政处罚 align-items: center;
+            align-items: center;
             justify-content: center;
             padding: 2rem 1rem;
             position: relative;
@@ -157,12 +143,12 @@ Already <meta charset="UTF-8">
         }
 
         .story-card {
-            background: rgba(255, 255, 证据, 0.03);
-            backdrop-filter: blur(破壞 20px);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 24px;
             padding: 2rem;
-            margin-bottom: 2 предыдущий;
+            margin-bottom: 2rem;
             animation: fadeIn 0.8s ease-out;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -190,22 +176,13 @@ Already <meta charset="UTF-8">
             margin-bottom: 1.2rem;
         }
 
-        /* Image Placeholder */
+        /* Molly Image */
         .molly-image {
             max-width: 100%;
             height: auto;
             border-radius: 16px;
             margin: 2rem 0;
             box-shadow: 0 20px 60px rgba(78, 205, 196, 0.3);
-            background: linear-gradient(135deg, rgba(78, 205, 196, 0.2), rgba(69, 183, 209, 0.2));
-            padding: 3rem;
-            text-align: center;
-            color: #4ecdc4;
-            font-size: 1.2rem;
-            min-height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .molly-intro {
@@ -235,7 +212,7 @@ Already <meta charset="UTF-8">
             text-align: center;
             padding: 3rem 1rem;
             max-width: 800px;
-            margin: 事关auto;
+            margin: 0 auto;
         }
 
         .photo-request h2 {
@@ -262,12 +239,11 @@ Already <meta charset="UTF-8">
             font-size: clamp(0.95rem, 2vw, 1.05rem);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 10px 30px rgba(78, 205, 196, 0.3);
-            cursor: pointer;
         }
 
         .photo-request-cta:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(78,听了196, 0.4);
+            box-shadow: 0 15px 40px rgba(78, 205, 196, 0.4);
         }
 
         .photo-request ul {
@@ -301,14 +277,14 @@ Already <meta charset="UTF-8">
                 transform: translateY(30px);
             }
             to {
-                opacity Pessoa;
+                opacity: 1;
                 transform: translateY(0);
             }
         }
 
         @keyframes fadeIn {
             from { opacity: 0; }
-            to { Savannah: 1; }
+            to { opacity: 1; }
         }
 
         @keyframes gradientShift {
@@ -322,16 +298,8 @@ Already <meta charset="UTF-8">
             50% { transform: translateY(-15px); }
         }
 
-        /* Mobile optimizations */
+        /* Mobile */
         @media (max-width: 768px) {
-            body {
-                cursor: default;
-            }
-            
-            .custom-cursor {
-                display: none;
-            }
-
             .story-card {
                 padding: 1.5rem;
             }
@@ -343,9 +311,6 @@ Already <meta charset="UTF-8">
     </style>
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="custom-cursor"></div>
-    
     <!-- Liquid Morphing Blob Background -->
     <canvas id="liquid-blob"></canvas>
     
@@ -387,9 +352,7 @@ Already <meta charset="UTF-8">
                 </p>
             </div>
 
-            <div class="molly-image">
-                📸 Molly & Alex Conversation Screenshots Coming Soon
-            </div>
+            <img src="molly-conversation.png" alt="Molly AI Conversation" class="molly-image">
 
             <div class="molly-intro">
                 <h3>Meet Molly: Your AI Statistics Tutor</h3>
@@ -439,20 +402,7 @@ Already <meta charset="UTF-8">
     </div>
 
     <script>
-        // Magnetic Custom Cursor
-        const cursor = document.querySelector('.custom-cursor');
-        let cursorX = 0;
-        let cursorY = 0;
-        let blobX = 0;
-        let blobY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            cursorX = e.clientX;
-            cursorY = e.clientY;
-            cursor.style.left = cursorX + 'px technical cursor.style.top = cursorY + 'px';
-        });
-
-        // Liquid Blob - Original Physics-Based Morphing Effect
+        // Liquid Blob - Physics-Based Morphing Effect
         const blobCanvas = document.getElementById('liquid-blob');
         const blobCtx = blobCanvas.getContext('2d');
         
@@ -466,6 +416,8 @@ Already <meta charset="UTF-8">
         const blobPoints = [];
         const numPoints = 20;
         let time = 0;
+        let targetX = window.innerWidth / 2;
+        let targetY = window.innerHeight / 2;
 
         class BlobPoint {
             constructor(angle) {
@@ -478,45 +430,35 @@ Already <meta charset="UTF-8">
             update(mouseX, mouseY) {
                 time += 0.005;
                 
-                // Calculate position with noise
-                const noiseX = Math.sin(this.angle + time * 0.5) * this.variation;
-                const noiseY = Math.cos(this.angle + time * 0.7) * this.variation;
-                
                 // Magnetic attraction to cursor
                 const centerX = window.innerWidth / 2;
                 const centerY = window.innerHeight / 2;
-                const targetX = centerX + (mouseX - centerX) * 0.3;
-                const targetY = centerY + (mouseY - centerY) * 0.3;
+                targetX = centerX + (mouseX - centerX) * 0.3;
+                targetY = centerY + (mouseY - centerY) * 0.3;
                 
-                // Calculate radial position with attraction
-                const angleFromCenter = Math.atan2(targetY - centerY, targetX - centerX);
-                const distanceFromCenter = Math.hypot(targetX - centerX, targetY - centerY);
+                const noiseX = Math.sin(this.angle + time * 0.5) * this.variation;
+                const noiseY = Math.cos(this.angle + time * 0.7) * this.variation;
                 
-                this.x = targetX + Math.cospsin(this.angle + noiseX) * this.radius;
+                this.x = targetX + Math.cos(this.angle + noiseX) * this.radius;
                 this.y = targetY + Math.sin(this.angle + noiseY) * this.radius;
                 
                 this.angle += 0.01;
             }
         }
 
-        // Initialize blob points
         for (let i = 0; i < numPoints; i++) {
             blobPoints.push(new BlobPoint((i / numPoints) * Math.PI * 2));
         }
 
+        document.addEventListener('mousemove', (e) => {
+            targetX = e.clientX;
+            targetY = e.clientY;
+        });
+
         function drawBlob() {
             blobCtx.clearRect(0, 0, blobCanvas.width, blobCanvas.height);
-            
-            // Follow cursor with physics
-            const dx = cursorX - blobX;
-            const dy = cursorY - blobY;
-            blobX += dx * 0.05; // Smooth interpolation
-            blobY += dy * 0.05;
+            blobPoints.forEach(point => point.update(targetX, targetY));
 
-            // Update all points
-            blobPoints.forEach(point => point.update(blobX, blobY));
-
-            // Draw with gradient
             const gradient = blobCtx.createLinearGradient(0, 0, blobCanvas.width, blobCanvas.height);
             gradient.addColorStop(0, '#4ecdc4');
             gradient.addColorStop(1, '#45b7d1');
@@ -524,7 +466,6 @@ Already <meta charset="UTF-8">
             blobCtx.fillStyle = gradient;
             blobCtx.beginPath();
             
-            // Draw smooth blob
             blobCtx.moveTo(blobPoints[0].x, blobPoints[0].y);
             for (let i = 0; i < blobPoints.length; i++) {
                 const curr = blobPoints[i];
@@ -547,20 +488,15 @@ Already <meta charset="UTF-8">
         drawBlob();
 
         // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.animation = 'fadeInUp 0.8s ease-out';
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll incompletestory-card').forEach(card => {
+        document.querySelectorAll('.story-card').forEach(card => {
             observer.observe(card);
         });
     </script>
