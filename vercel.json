@@ -1,1 +1,14 @@
-{"redirects": [{"source": "/molly", "destination": "/molly.html", "permanent": true}]}
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "astro",
+  "redirects": [
+    {
+      "source": "/molly",
+      "destination": "/molly.html",
+      "permanent": true
+    }
+  ]
+}
