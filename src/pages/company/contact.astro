@@ -1,11 +1,11 @@
 ---
-import ContactForm from '../../components/forms/ContactForm.astro';
+import { Icon } from 'astro-icon/components';
 import Layout from '../../layouts/Page.astro';
-import { Container } from '@components/odyssey-theme';
+import { Container, Button } from '@components/odyssey-theme';
 
 const seo = {
-	title: 'Contact | Astro Odyssey Theme',
-	description: 'Contact Page',
+	title: 'Contact | Bespoke Ethos',
+	description: 'Contact Bespoke Ethos for AI consulting and automation services',
 };
 ---
 
@@ -15,22 +15,21 @@ const seo = {
 			<div class="contact-hero__text-section">
 				<h1>Contact Us</h1>
 				<p>
-					This is a contact form using Odyssey's form components to create a
-					contact form component. The contact form is setup to use Netlify's
-					form detection; however, it can easily be translated to other popular
-					form services such as Formspree, Getform, Formspark, etc.
+					Ready to automate your busywork and amplify your revenue? Let's discuss how Bespoke Ethos can transform your business operations.
 				</p>
+				<div class="contact-btns__container">
+					<Button href="mailto:contact@bespokeethos.com?subject=webcontact" customIcon>
+						Email Us
+						<Fragment slot="icon">
+							<Icon name="mdi:email"/>
+						</Fragment>
+					</Button>
+				</div>
 				<div>
 					<p>
-						<em><a href="tel:8008675309">(800) 867-5309</a></em> • <em
-							><a href="mailto:hello@odysseytheme.com">hello@ourcompany.com</a
-							></em
-						>
+						<em><a href="mailto:contact@bespokeethos.com?subject=webcontact">contact@bespokeethos.com</a></em>
 					</p>
 				</div>
-			</div>
-			<div class="col-2__container">
-				<ContactForm />
 			</div>
 		</section>
 	</Container>
@@ -39,10 +38,7 @@ const seo = {
 <style>
 	.contact-hero__section {
 		margin: var(--section-margin) auto;
-		display: grid;
-		grid-template-columns: 1fr 1fr;
 		min-height: calc(90vh - var(--navbar-height));
-		gap: 3rem;
 	}
 	.contact-hero__text-section {
 		padding: 2rem;
@@ -52,14 +48,7 @@ const seo = {
 		background-color: var(--theme-surface-1);
 		border-radius: var(--theme-shape-radius);
 	}
-	.col-2__container {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}
-	@media (max-width: 768px) {
-		.contact-hero__section {
-			grid-template-columns: 1fr;
-		}
+	.contact-btns__container {
+		margin: 1.5rem 0;
 	}
 </style>
