@@ -15,6 +15,27 @@ const title = Astro.props.title || settings.title;
 const description = Astro.props.description || settings.description;
 const canonicalURL = Astro.props.canonicalURL || new URL(Astro.url.pathname, Astro.site);
 const image = new URL(Astro.props.image || './og-logo.png', Astro.site);
+
+// Build BreadcrumbList from current path
+function titleCase(segment) {
+  return decodeURIComponent(segment)
+    .replace(/[-_]+/g, ' ')
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+}
+const segments = Astro.url.pathname.split('/').filter(Boolean);
+let cumulative = '';
+const breadcrumbItems = [
+  { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+];
+for (let i = 0; i < segments.length; i++) {
+  cumulative += '/' + segments[i];
+  breadcrumbItems.push({
+    '@type': 'ListItem',
+    position: i + 2,
+    name: titleCase(segments[i]),
+    item: new URL(cumulative, Astro.site).toString(),
+  });
+}
 ---
 
 <!-- Global Metadata -->
@@ -55,6 +76,21 @@ const image = new URL(Astro.props.image || './og-logo.png', Astro.site);
     url: settings.url,
     name: settings.name,
     logo: new URL('/logo.png', Astro.site).toString(),
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        email: 'mailto:contact@bespokeethos.com',
+        contactType: 'sales',
+        availableLanguage: ['en']
+      }
+    ]
+  })}
+</script>
+<script type="application/ld+json">
+  {JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbItems,
   })}
 </script>
 <script type="application/ld+json">
