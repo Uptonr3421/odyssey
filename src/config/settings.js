@@ -3,6 +3,6 @@ export default {
 	description: `Transform AI capability into usable, auditable workflows. Over a decade of hands-on experience training major models including ChatGPT, Claude, and Copilot.`,
 	url: `https://bespokeethos.com`, // No trailing slash!
 	name: `Bespoke Ethos`, // The short name of the business or brand name. Used for things like the copyright in the footer.
-	enableThemeSwitcher: true,
+	enableThemeSwitcher: false,
 	showPlug: false, // Disable this if you want to remove the plug from the footer. (╯°□°)╯︵ ┻━┻
 };

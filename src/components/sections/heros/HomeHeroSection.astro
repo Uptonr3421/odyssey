@@ -2,8 +2,6 @@
 import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
 import { Container, Button } from '@components/odyssey-theme';
-import settings from '../../../config/settings.js';
-import {ThemeSwitcher} from '../../theme-switcher/theme-switcher';
 ---
 
 <Container>
@@ -44,11 +42,10 @@ import {ThemeSwitcher} from '../../theme-switcher/theme-switcher';
 				<p class="hero-credibility">
 					<strong>Upton Rand</strong> — AI Trainer, Practitioner, Sherpa
 				</p>
-        {settings.enableThemeSwitcher && <ThemeSwitcher client:only/>}
 		</div>
 		<div class="hero-section__image">
 				<Image
-					src="/assets/images/home/classic-hero.jpg"
+					src="/assets/images/home/dark-hero.jpg"
 					alt="Bespoke Ethos — AI for Small Business"
 					width={1600}
 					height={900}

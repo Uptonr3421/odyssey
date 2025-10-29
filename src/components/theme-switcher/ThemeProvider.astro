@@ -1,12 +1,9 @@
 ---
 ---
 
-<!-- This is a simple script to check if there is a theme value in local storage. That way the theme stays with you between pages -->
+<!-- Lock site to dark theme -->
 <script is:inline>
 	const doc = document.firstElementChild;
-	const localStorageTheme = localStorage.getItem('theme');
-
-	if (localStorageTheme !== null) {
-		doc.setAttribute('data-theme', localStorageTheme);
-	}
+	doc.setAttribute('data-theme', 'dark');
+	localStorage.setItem('theme', 'dark');
 </script>
