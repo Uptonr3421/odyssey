@@ -14,13 +14,15 @@ export interface Props {
 const title = Astro.props.title || settings.title;
 const description = Astro.props.description || settings.description;
 const canonicalURL = Astro.props.canonicalURL || new URL(Astro.url.pathname, Astro.site);
-const image = new URL(Astro.props.image || './social.png', Astro.site);
+const image = new URL(Astro.props.image || './og-logo.png', Astro.site);
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
 <link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/logo.png" />
+<meta name="theme-color" content="#111111" />
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />
@@ -46,6 +48,15 @@ const image = new URL(Astro.props.image || './social.png', Astro.site);
 {settings.enableThemeSwitcher && <ThemeProvider />}
 
 <!-- Google Analytics -->
+<script type="application/ld+json">
+  {JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    url: settings.url,
+    name: settings.name,
+    logo: new URL('/logo.png', Astro.site).toString(),
+  })}
+</script>
 <script>
   var host = window.location.hostname;
   if(host != 'localhost') {
