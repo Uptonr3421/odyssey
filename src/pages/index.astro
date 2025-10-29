@@ -1,8 +1,332 @@
 ---
 import Layout from '../layouts/Page.astro';
 import HomeHeroSection from '../components/sections/heros/HomeHeroSection.astro';
+import ThreeColumnTextSection from '../components/sections/ThreeColumnTextSection.astro';
+import TextCardSection from '../components/sections/TextCardSection.astro';
+import { Container } from '@components/odyssey-theme';
+import { Icon } from 'astro-icon/components';
+
+const seo = {
+	title: 'Bespoke Ethos — AI for Small Business | Upton Rand — AI Trainer, Practitioner, Sherpa',
+	description: 'Transform AI capability into usable, auditable workflows. Over a decade of hands-on experience training major models including ChatGPT, Claude, and Copilot.',
+};
 ---
 
-<Layout>
+<Layout seo={seo}>
 	<HomeHeroSection />
+
+	<!-- Feature Grid Section -->
+	<Container>
+		<section class="feature-grid__section">
+			<div class="feature-grid__header">
+				<h2>Why Choose Bespoke Ethos</h2>
+				<p>Proven expertise meets practical implementation</p>
+			</div>
+			<div class="feature-grid__grid">
+				<div class="feature-grid__item">
+					<div class="feature-grid__icon">
+						<Icon name="mdi:chart-line" />
+					</div>
+					<h3>Decade of Experience</h3>
+					<p>Direct training experience with ChatGPT, Claude, and Copilot. We built the AI your competition sells.</p>
+				</div>
+				<div class="feature-grid__item">
+					<div class="feature-grid__icon">
+						<Icon name="mdi:cog-outline" />
+					</div>
+					<h3>Practical Automation</h3>
+					<p>Workflows designed for small teams to run and maintain without requiring an ML PhD or data science degree.</p>
+				</div>
+				<div class="feature-grid__item">
+					<div class="feature-grid__icon">
+						<Icon name="mdi:shield-check" />
+					</div>
+					<h3>Human-in-the-Loop</h3>
+					<p>Systems built with human oversight as default, preserving accountability and ensuring safer outcomes.</p>
+				</div>
+				<div class="feature-grid__item">
+					<div class="feature-grid__icon">
+						<Icon name="mdi:clock-fast" />
+					</div>
+					<h3>Time ROI Focus</h3>
+					<p>Restore owner time to think, sell, and create by automating repetitive busywork effectively.</p>
+				</div>
+				<div class="feature-grid__item">
+					<div class="feature-grid__icon">
+						<Icon name="mdi:account-supervisor" />
+					</div>
+					<h3>Small Business Native</h3>
+					<p>Solutions from practitioners who understand the hats you wear because we've worn them too.</p>
+				</div>
+				<div class="feature-grid__item">
+					<div class="feature-grid__icon">
+						<Icon name="mdi:check-decagram" />
+					</div>
+					<h3>Auditable Systems</h3>
+					<p>Clear handoffs, audit trails, and governance that keeps control firmly in your hands.</p>
+				</div>
+			</div>
+		</section>
+	</Container>
+
+	<!-- Services Overview -->
+	<TextCardSection surfaceNumber="1">
+		<h2>What We Do</h2>
+		<p class="section-subtitle">Comprehensive AI services tailored for small business success</p>
+		<ThreeColumnTextSection>
+			<div slot="column-1-body">
+				<div class="service-icon">
+					<Icon name="mdi:compass-outline" />
+				</div>
+				<h3>AI Sherpa Services</h3>
+				<p>Guide nontechnical owners through tool selection, integration, and governance so AI works where it matters most.</p>
+			</div>
+
+			<div slot="column-2-body">
+				<div class="service-icon">
+					<Icon name="mdi:robot-outline" />
+				</div>
+				<h3>Workflow Automation</h3>
+				<p>End-to-end integration connecting chat models, data stores, and automation triggers into reliable business processes.</p>
+			</div>
+
+			<div slot="column-3-body">
+				<div class="service-icon">
+					<Icon name="mdi:office-building" />
+				</div>
+				<h3>Small Business AI Integration</h3>
+				<p>Transform AI capability into usable, auditable workflows that your team can run and maintain.</p>
+			</div>
+		</ThreeColumnTextSection>
+	</TextCardSection>
+
+	<!-- Value Proposition -->
+	<Container>
+		<section class="value-prop__section">
+			<h2>Automate Busywork, Amplify Revenue</h2>
+			<div class="value-prop__grid">
+				<div class="value-prop__item">
+					<h3>Remove Repetitive Tasks</h3>
+					<p>Focus on customers, products, and growth instead of manual busywork that drains your time and energy.</p>
+				</div>
+				<div class="value-prop__item">
+					<h3>Compete Without Larger Headcount</h3>
+					<p>Deliver capabilities of a bigger team through carefully engineered AI workflows and automation.</p>
+				</div>
+				<div class="value-prop__item">
+					<h3>Proven Time Investment Returns</h3>
+					<p>Systems that have historically repaid their cost many times over by reclaiming precious owner hours.</p>
+				</div>
+				<div class="value-prop__item">
+					<h3>Maintained Control</h3>
+					<p>Governed, maintainable automations with clear handoffs and human checkpoints keep you in charge.</p>
+				</div>
+			</div>
+		</section>
+	</Container>
+
+	<!-- Philosophy Section -->
+	<TextCardSection surfaceNumber="2">
+		<h2>Our Core Philosophy</h2>
+		<div class="philosophy__grid">
+			<div class="philosophy__item">
+				<h3>Augment, Do Not Replace</h3>
+				<p>AI is a force multiplier for human judgment, not a substitute for it.</p>
+			</div>
+			<div class="philosophy__item">
+				<h3>Human in the Loop as Default</h3>
+				<p>Systems designed with human oversight produce safer, more useful outcomes.</p>
+			</div>
+			<div class="philosophy__item">
+				<h3>Time Is the Ultimate ROI</h3>
+				<p>The highest-value outcome is restored owner time to think, sell, and create.</p>
+			</div>
+			<div class="philosophy__item">
+				<h3>Built by Practitioners</h3>
+				<p>Solutions from people who understand small business because we've lived it.</p>
+			</div>
+		</div>
+	</TextCardSection>
+
+	<!-- CTA Section -->
+	<Container>
+		<section class="cta__section">
+			<h2>Ready to Transform Your Business?</h2>
+			<p>Let's discuss how AI automation can free up your time and amplify your revenue.</p>
+			<div class="cta__buttons">
+				<a href="/company/contact" class="cta-button cta-button--primary">Get Started</a>
+				<a href="/services" class="cta-button cta-button--secondary">Explore Services</a>
+			</div>
+		</section>
+	</Container>
 </Layout>
+
+<style>
+	/* Feature Grid */
+	.feature-grid__section {
+		margin: var(--section-margin) auto;
+		padding: 4rem 0;
+	}
+	.feature-grid__header {
+		text-align: center;
+		margin-bottom: 3rem;
+	}
+	.feature-grid__header h2 {
+		margin-bottom: 0.5rem;
+	}
+	.feature-grid__header p {
+		font-size: 1.25rem;
+		color: var(--theme-text-secondary);
+	}
+	.feature-grid__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+		margin-top: 2rem;
+	}
+	.feature-grid__item {
+		padding: 2rem;
+		border-radius: var(--theme-shape-radius);
+		background: var(--theme-surface-1);
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+	}
+	.feature-grid__item:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+	}
+	.feature-grid__icon {
+		font-size: 2.5rem;
+		color: var(--theme-primary);
+		margin-bottom: 1rem;
+	}
+	.feature-grid__item h3 {
+		margin-bottom: 0.75rem;
+		font-size: 1.25rem;
+	}
+	.feature-grid__item p {
+		color: var(--theme-text-secondary);
+		line-height: 1.6;
+	}
+
+	/* Service Icons */
+	.service-icon {
+		font-size: 3rem;
+		color: var(--theme-primary);
+		margin-bottom: 1rem;
+	}
+	.section-subtitle {
+		font-size: 1.125rem;
+		color: var(--theme-text-secondary);
+		margin-top: 0.5rem;
+		text-align: center;
+	}
+
+	/* Value Proposition */
+	.value-prop__section {
+		margin: var(--section-margin) auto;
+		padding: 4rem 0;
+		text-align: center;
+	}
+	.value-prop__section h2 {
+		margin-bottom: 3rem;
+		font-size: 2.5rem;
+	}
+	.value-prop__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+		text-align: left;
+	}
+	.value-prop__item {
+		padding: 1.5rem;
+	}
+	.value-prop__item h3 {
+		margin-bottom: 0.75rem;
+		color: var(--theme-primary);
+	}
+	.value-prop__item p {
+		color: var(--theme-text-secondary);
+		line-height: 1.6;
+	}
+
+	/* Philosophy */
+	.philosophy__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+		margin-top: 2rem;
+	}
+	.philosophy__item {
+		text-align: center;
+	}
+	.philosophy__item h3 {
+		margin-bottom: 0.75rem;
+		font-size: 1.125rem;
+	}
+	.philosophy__item p {
+		color: var(--theme-text-secondary);
+		line-height: 1.6;
+	}
+
+	/* CTA Section */
+	.cta__section {
+		margin: var(--section-margin) auto;
+		padding: 4rem 2rem;
+		text-align: center;
+		background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-primary-hover) 100%);
+		border-radius: var(--theme-shape-radius);
+		color: white;
+	}
+	.cta__section h2 {
+		color: white;
+		margin-bottom: 1rem;
+	}
+	.cta__section p {
+		font-size: 1.25rem;
+		margin-bottom: 2rem;
+		opacity: 0.95;
+	}
+	.cta__buttons {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	.cta-button {
+		display: inline-block;
+		padding: 1rem 2rem;
+		border-radius: var(--theme-button-border-radius);
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.2s ease;
+	}
+	.cta-button--primary {
+		background: white;
+		color: var(--theme-primary);
+	}
+	.cta-button--primary:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	}
+	.cta-button--secondary {
+		background: transparent;
+		color: white;
+		border: 2px solid white;
+	}
+	.cta-button--secondary:hover {
+		background: white;
+		color: var(--theme-primary);
+	}
+
+	@media (max-width: 768px) {
+		.feature-grid__grid {
+			grid-template-columns: 1fr;
+		}
+		.value-prop__section h2 {
+			font-size: 2rem;
+		}
+		.cta__section {
+			padding: 3rem 1.5rem;
+		}
+	}
+</style>

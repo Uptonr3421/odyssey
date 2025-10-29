@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
 import { Container, Button } from '@components/odyssey-theme';
 import settings from '../../../config/settings.js';
 import {ThemeSwitcher} from '../../theme-switcher/theme-switcher';
@@ -8,13 +9,28 @@ import {ThemeSwitcher} from '../../theme-switcher/theme-switcher';
 <Container>
 	<section class="hero-section__section">
 		<div class="hero-section__text">
-				<h1>We Built the AI our Competition Sells.</h1>
-				<p>
-					<strong>Upton Rand — AI Trainer, Practitioner, Sherpa</strong> Over a decade training major models including ChatGPT, Claude, and Copilot; translated research techniques into business-ready automation.
+				<div class="hero-badge">
+					<Icon name="mdi:certificate-outline" />
+					<span>Over a Decade Training AI Models</span>
+				</div>
+				<h1>We Built the AI Your Competition Sells</h1>
+				<p class="hero-subtitle">
+					Transform AI capability into usable, auditable workflows for small business. No ML PhD required.
 				</p>
-				<p>
-					<strong>Bespoke Ethos — AI for Small Business</strong> Workflows that small teams can run and maintain without an ML PhD.
-				</p>
+				<div class="hero-highlights">
+					<div class="hero-highlight">
+						<Icon name="mdi:check-circle" />
+						<span>Direct experience training ChatGPT, Claude, and Copilot</span>
+					</div>
+					<div class="hero-highlight">
+						<Icon name="mdi:check-circle" />
+						<span>Workflows small teams can run and maintain</span>
+					</div>
+					<div class="hero-highlight">
+						<Icon name="mdi:check-circle" />
+						<span>Human-in-the-loop systems that preserve control</span>
+					</div>
+				</div>
 				<div class="hero-btns__container">
 					<Button href="/company/contact" customIcon
 						>Get Started
@@ -23,18 +39,24 @@ import {ThemeSwitcher} from '../../theme-switcher/theme-switcher';
             </Fragment>
             </Button
 					>
-					<Button href="/company/about" unelevated>Learn More</Button>
+					<Button href="/services" unelevated>Explore Services</Button>
 				</div>
+				<p class="hero-credibility">
+					<strong>Upton Rand</strong> — AI Trainer, Practitioner, Sherpa
+				</p>
         {settings.enableThemeSwitcher && <ThemeSwitcher client:only/>}
 		</div>
 		<div class="hero-section__image">
-				<picture>
-					<img
-						src="/assets/images/home/classic-hero.jpg"
-						alt="Astro Odyssey"
-						id="home-hero-image"
-					/>
-				</picture>
+				<Image
+					src="/assets/images/home/classic-hero.jpg"
+					alt="Bespoke Ethos — AI for Small Business"
+					width={1600}
+					height={900}
+					format="webp"
+					quality={85}
+					priority
+					id="home-hero-image"
+				/>
 		</div>
 	</section>
 </Container>
@@ -46,33 +68,125 @@ import {ThemeSwitcher} from '../../theme-switcher/theme-switcher';
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		align-items: center;
-		gap: 1rem;
+		gap: 3rem;
+		padding: 2rem 0;
 	}
 	.hero-section__text {
 		justify-self: center;
-		max-width: 25rem;
+		max-width: 35rem;
 	}
+
+	.hero-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.5rem 1rem;
+		background: var(--theme-surface-1);
+		border-radius: 2rem;
+		margin-bottom: 1.5rem;
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: var(--theme-primary);
+	}
+	.hero-badge svg {
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+
+	.hero-section__text h1 {
+		font-size: clamp(2.5rem, 5vw, 3.5rem);
+		line-height: 1.1;
+		margin-bottom: 1.5rem;
+		font-weight: 800;
+	}
+
+	.hero-subtitle {
+		font-size: 1.25rem;
+		line-height: 1.6;
+		margin-bottom: 2rem;
+		color: var(--theme-text-secondary);
+	}
+
+	.hero-highlights {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		margin-bottom: 2rem;
+	}
+	.hero-highlight {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.75rem;
+		font-size: 1rem;
+		line-height: 1.5;
+	}
+	.hero-highlight svg {
+		width: 1.5rem;
+		height: 1.5rem;
+		color: var(--theme-primary);
+		flex-shrink: 0;
+		margin-top: 0.125rem;
+	}
+
 	.hero-btns__container {
 		display: flex;
 		align-items: center;
 		gap: 1rem;
+		margin-bottom: 1.5rem;
+		flex-wrap: wrap;
 	}
-	.hero-btns__container {
-		margin-right: 1rem;
+
+	.hero-credibility {
+		font-size: 0.875rem;
+		color: var(--theme-text-secondary);
+		margin-top: 1rem;
 	}
+	.hero-credibility strong {
+		color: var(--theme-on-background);
+	}
+
 	.hero-section__image {
 		display: flex;
+		position: relative;
 	}
 	.hero-section__image img {
 		width: 100%;
 		height: 100%;
-		max-height: 80vh;
+		max-height: 600px;
 		object-fit: cover;
 		border-radius: var(--theme-shape-radius);
+		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
 	}
+
+	@media (max-width: 1024px) {
+		.hero-section__section {
+			gap: 2rem;
+		}
+		.hero-section__text {
+			max-width: 30rem;
+		}
+	}
+
 	@media (max-width: 768px) {
 		.hero-section__section {
 			grid-template-columns: 1fr;
+			min-height: auto;
+			padding: 3rem 0;
+		}
+		.hero-section__text {
+			max-width: 100%;
+		}
+		.hero-section__text h1 {
+			font-size: 2rem;
+		}
+		.hero-subtitle {
+			font-size: 1.125rem;
+		}
+		.hero-section__image {
+			order: -1;
+		}
+		.hero-section__image img {
+			max-height: 400px;
 		}
 	}
 </style>
