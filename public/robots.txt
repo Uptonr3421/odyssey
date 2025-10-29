@@ -1,0 +1,21 @@
+# Bespoke Ethos robots.txt
+# Allow all search engines and LLM crawlers; expose sitemap
+
+User-agent: *
+Allow: /
+
+# Popular AI/LLM crawlers
+User-agent: GPTBot
+Allow: /
+User-agent: CCBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+
+Sitemap: https://bespokeethos.com/sitemap-index.xml
+
+

@@ -57,6 +57,23 @@ const image = new URL(Astro.props.image || './og-logo.png', Astro.site);
     logo: new URL('/logo.png', Astro.site).toString(),
   })}
 </script>
+<script type="application/ld+json">
+  {JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    url: settings.url,
+    name: settings.name,
+    publisher: {
+      '@type': 'Organization',
+      name: settings.name,
+      logo: {
+        '@type': 'ImageObject',
+        url: new URL('/logo.png', Astro.site).toString()
+      }
+    },
+    inLanguage: 'en-US'
+  })}
+</script>
 <script>
   var host = window.location.hostname;
   if(host != 'localhost') {
