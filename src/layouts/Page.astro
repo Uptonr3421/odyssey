@@ -21,6 +21,11 @@ const { seo } = Astro.props as Props;
 		<span slot="logo">
 			<Logo />
 		</span>
+		<span slot="action-item">
+			<Button href="mailto:contact@bespokeethos.com?subject=webcontact" aria-label="Email Bespoke Ethos">
+				Email Us
+			</Button>
+		</span>
 	</Header>
 	<div id="page">
 		<slot />

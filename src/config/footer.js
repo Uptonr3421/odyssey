@@ -12,6 +12,10 @@ export const footerLists = [
 				title: 'Contact',
 				slug: '/company/contact',
 			},
+			{
+				title: 'Email Us',
+				slug: 'mailto:contact@bespokeethos.com?subject=webcontact',
+			},
 		],
 	},
 ];

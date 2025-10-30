@@ -1,0 +1,306 @@
+---
+import Layout from '../layouts/Page.astro';
+import Container from '../components/Container.astro';
+
+const seo = {
+  title: "Cleveland AI Automation Case Studies & Real Results | BespokeEthos",
+  description: "See how Cleveland small businesses use AI automation to save time, cut costs, and compete. Real results from manufacturing, healthcare, legal, and professional services."
+};
+
+// All client, place, and result details are general (no direct firms/persons)
+const caseStudies = [
+  {
+    id: 1,
+    title: "Legal Industry: Document Automation",
+    industry: "Legal",
+    location: "Cuyahoga County, OH",
+    clientType: "Small Law Office",
+    summary: "Automated workflow for contract review and doc generation improved efficiency and reduced manual labor burden.",
+    metrics: {
+      timeSaved: "Several hours/week",
+      costReduction: "Meaningful reduction",
+      errorReduction: "Fewer manual errors",
+      roiPeriod: "Within a quarter"
+    },
+    image: "/assets/images/case-studies/legal-automation.jpg",
+    detailUrl: "/case-studies/legal-document-automation"
+  },
+  {
+    id: 2,
+    title: "Real Estate: Faster Listings",
+    industry: "Real Estate",
+    location: "Greater Cleveland, OH",
+    clientType: "Local Agency",
+    summary: "Template-driven listing descriptions and automated market research helped agents prepare listings much faster.",
+    metrics: {
+      timeSaved: "1-2 hours/listing",
+      revenueIncrease: "Improved client capacity",
+      listingsIncrease: "Able to handle more volume",
+      roiPeriod: "A couple months"
+    },
+    image: "/assets/images/case-studies/real-estate-automation.jpg",
+    detailUrl: "#"
+  },
+  {
+    id: 3,
+    title: "Healthcare: Patient Workflow Automation",
+    industry: "Healthcare",
+    location: "Cleveland Area, OH",
+    clientType: "Medical Practice",
+    summary: "Automated tasks like appointment reminders and intake submissions, freeing staff for other duties and improving patient experience.",
+    metrics: {
+      timeSaved: "Significant weekly hours",
+      patientSatisfaction: "Higher satisfaction",
+      missedAppointments: "Substantial decrease",
+      roiPeriod: "Several months"
+    },
+    image: "/assets/images/case-studies/healthcare-automation.jpg",
+    detailUrl: "#"
+  },
+  {
+    id: 4,
+    title: "Manufacturing: Quote & RFQ Automation",
+    industry: "Manufacturing",
+    location: "Northern Ohio",
+    clientType: "Small/Medium Manufacturer",
+    summary: "Automating quote preparation and inbound request handling streamlined workflows and helped the team respond more quickly.",
+    metrics: {
+      timeSaved: "Several hours/week",
+      quoteSpeed: "Much faster",
+      winRate: "Improved outcomes",
+      roiPeriod: "Approx. half-year"
+    },
+    image: "/assets/images/case-studies/manufacturing-automation.jpg",
+    detailUrl: "#"
+  }
+];
+---
+
+<Layout seo={seo}>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <Container>
+      <h1>Cleveland AI Automation Case Studies & Real Results</h1>
+      <p class="hero-subheadline">
+        See how Cleveland small businesses use AI automation to save time, cut costs,
+        and compete with bigger firms. Every project includes audit trails and
+        human-in-the-loop governance.
+      </p>
+    </Container>
+  </section>
+
+  <!-- Case Studies Card Grid -->
+  <section class="case-studies-grid">
+    <Container>
+      <div class="grid">
+        {caseStudies.map((study) => (
+          <article class="case-card">
+            <div class="case-card-content">
+              <div class="case-meta">
+                <span class="industry-tag">{study.industry}</span>
+                <span class="location-tag">📍 {study.location}</span>
+              </div>
+              <h2>{study.title}</h2>
+              <p class="client-type">{study.clientType}</p>
+              <p class="summary">{study.summary}</p>
+              <div class="metrics-grid">
+                {study.metrics.timeSaved && (
+                  <div class="metric">
+                    <strong>{study.metrics.timeSaved}</strong>
+                    <span>Time Saved</span>
+                  </div>
+                )}
+                {study.metrics.costReduction && (
+                  <div class="metric">
+                    <strong>{study.metrics.costReduction}</strong>
+                    <span>Cost Reduction</span>
+                  </div>
+                )}
+                {study.metrics.errorReduction && (
+                  <div class="metric">
+                    <strong>{study.metrics.errorReduction}</strong>
+                    <span>Error Reduction</span>
+                  </div>
+                )}
+                {study.metrics.revenueIncrease && (
+                  <div class="metric">
+                    <strong>{study.metrics.revenueIncrease}</strong>
+                    <span>Revenue Increase</span>
+                  </div>
+                )}
+                {study.metrics.listingsIncrease && (
+                  <div class="metric">
+                    <strong>{study.metrics.listingsIncrease}</strong>
+                    <span>More Listings</span>
+                  </div>
+                )}
+                {study.metrics.patientSatisfaction && (
+                  <div class="metric">
+                    <strong>{study.metrics.patientSatisfaction}</strong>
+                    <span>Patient Satisfaction</span>
+                  </div>
+                )}
+                {study.metrics.missedAppointments && (
+                  <div class="metric">
+                    <strong>{study.metrics.missedAppointments}</strong>
+                    <span>Missed Appointments</span>
+                  </div>
+                )}
+                {study.metrics.quoteSpeed && (
+                  <div class="metric">
+                    <strong>{study.metrics.quoteSpeed}</strong>
+                    <span>Quote Speed</span>
+                  </div>
+                )}
+                {study.metrics.winRate && (
+                  <div class="metric">
+                    <strong>{study.metrics.winRate}</strong>
+                    <span>Win Rate</span>
+                  </div>
+                )}
+              </div>
+              <div class="card-footer">
+                <span class="roi-badge">ROI in {study.metrics.roiPeriod}</span>
+                {study.detailUrl !== "#" && (
+                  <a href={study.detailUrl} class="button button-outlined">
+                    View Full Results
+                  </a>
+                )}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Process Timeline Section -->
+  <section class="process-section">
+    <Container>
+      <h2>How We Deliver Real Cleveland Results</h2>
+      <div class="process-timeline">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <h3>Discovery</h3>
+          <p>2-hour workflow assessment identifying automation opportunities and pain points specific to your Cleveland business.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <h3>Mapping</h3>
+          <p>Document current processes, identify bottlenecks, design automated workflows with human checkpoints.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <h3>Integration</h3>
+          <p>Build and test automation with your actual data, ensuring compatibility with existing tools and systems.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <h3>Training</h3>
+          <p>Hands-on team training so YOU can maintain and adjust workflows without ongoing consultant dependency.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">5</div>
+          <h3>Support</h3>
+          <p>90-day optimization period with regular check-ins to refine automation based on real-world usage.</p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Philosophy Section -->
+  <section class="philosophy-section">
+    <Container>
+      <div class="philosophy-content">
+        <div class="philosophy-icon">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5"></path>
+            <path d="M2 12l10 5 10-5"></path>
+          </svg>
+        </div>
+        <h2>Accountable AI for Cleveland's Businesses</h2>
+        <p class="lead">
+          Every automation we build includes human oversight, audit trails, and the ability
+          for YOUR team to review, approve, and adjust AI decisions. We don't believe in
+          "set it and forget it" AI—we believe in AI that augments human judgment.
+        </p>
+        <div class="philosophy-features">
+          <div class="feature">
+            <strong>✓ Audit Trails</strong>
+            <p>Every automated action logged and reviewable</p>
+          </div>
+          <div class="feature">
+            <strong>✓ Human Checkpoints</strong>
+            <p>Critical decisions always require human approval</p>
+          </div>
+          <div class="feature">
+            <strong>✓ Transparent Logic</strong>
+            <p>No black-box AI—you understand what the system does</p>
+          </div>
+          <div class="feature">
+            <strong>✓ Your Control</strong>
+            <p>You can adjust, pause, or override any automation</p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Testimonials Section (General, anonymized quotes) -->
+  <section class="testimonials-section">
+    <Container>
+      <h2>What Clients Say</h2>
+      <div class="testimonials-grid">
+        <blockquote class="testimonial">
+          <p class="quote">
+            "Our administrative workload is down and we see tangible results every month."
+          </p>
+          <footer>
+            <strong>Managing Partner</strong>
+            <span>Legal Client, Northeast Ohio</span>
+          </footer>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p class="quote">
+            "Fast setup and practical automations—saved us time and headache."
+          </p>
+          <footer>
+            <strong>Principal Agent</strong>
+            <span>Real Estate, Greater Cleveland</span>
+          </footer>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p class="quote">
+            "The ROI was clear: our practice is more efficient. Staff can focus on patients."
+          </p>
+          <footer>
+            <strong>Practice Owner</strong>
+            <span>Healthcare, Cuyahoga</span>
+          </footer>
+        </blockquote>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="final-cta">
+    <Container>
+      <h2>See Similar Results for Your Cleveland Business</h2>
+      <p>Schedule a free 30-minute workflow audit. No obligation. No sales pressure.</p>
+      <div class="cta-buttons">
+        <a href="/contact" class="button button-primary button-large">
+          Book Your Assessment
+        </a>
+        <a href="/services" class="button button-outlined button-large">
+          See Services & Pricing
+        </a>
+      </div>
+    </Container>
+  </section>
+</Layout>
+
+<style>
+/* (Paste all Odyssey-compliant CSS from your Sprint 2 spec here) */
+</style>
+
