@@ -2,6 +2,7 @@
 import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
 import { Container, Button } from '@components/odyssey-theme';
+import ClientLogoCarousel from '@components/sections/ClientLogoCarousel.astro';
 ---
 
 <Container>
@@ -11,7 +12,7 @@ import { Container, Button } from '@components/odyssey-theme';
 					<Icon name="mdi:certificate-outline" />
 					<span>Over a Decade Training AI Models</span>
 				</div>
-				<h1>We Built the AI Your Competition Sells</h1>
+				<h1>Cleveland AI Consulting for SMBs: Built on the AI Your Competition Sells</h1>
 				<p class="hero-subtitle">
 					Transform AI capability into usable, auditable workflows for small business. No ML PhD required.
 				</p>
@@ -30,14 +31,14 @@ import { Container, Button } from '@components/odyssey-theme';
 					</div>
 				</div>
 				<div class="hero-btns__container">
-					<Button href="/company/contact" customIcon
-						>Get Started
+<Button href="/company/contact" customIcon
+							>Get Your Free AI Assessment
             <Fragment slot="icon">
               <Icon name="ic:baseline-chevron-right"/>
             </Fragment>
             </Button
 					>
-					<Button href="/services" unelevated>Explore Services</Button>
+					<Button href="/services/consultation" unelevated>Schedule a Consultation</Button>
 				</div>
 				<p class="hero-credibility">
 					<strong>Upton Rand</strong> — AI Trainer, Practitioner, Sherpa
@@ -45,7 +46,7 @@ import { Container, Button } from '@components/odyssey-theme';
 		</div>
 		<div class="hero-section__image">
 				<Image
-					src="/assets/images/home/dark-hero.jpg"
+					src="/assets/images/home/hero-optimized.jpg"
 					alt="Bespoke Ethos — AI for Small Business"
 					width={1600}
 					height={900}
@@ -55,7 +56,8 @@ import { Container, Button } from '@components/odyssey-theme';
 					id="home-hero-image"
 				/>
 		</div>
-	</section>
+</section>
+	<ClientLogoCarousel />
 </Container>
 
 <style>

@@ -68,14 +68,92 @@ for (let i = 0; i < segments.length; i++) {
 <!-- For Demonstration of the themes -->
 {settings.enableThemeSwitcher && <ThemeProvider />}
 
-<!-- Google Analytics -->
-<script type="application/ld+json">
-  {JSON.stringify({
+<!-- Organization & LocalBusiness Schema -->
+<script type="application/ld+json" set:html={JSON.stringify({
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    url: settings.url,
-    name: settings.name,
-    logo: new URL('/logo.png', Astro.site).toString(),
+    '@type': ['ProfessionalService', 'LocalBusiness'],
+    name: 'Bespoke Ethos',
+    alternateName: 'BespokeEthos',
+    description: 'AI automation consulting for small businesses. Over a decade of hands-on training with ChatGPT, Claude, and Copilot. Transform AI capability into usable, auditable workflows.',
+    url: 'https://www.bespokeethos.com',
+    logo: 'https://www.bespokeethos.com/logo.png',
+    image: 'https://www.bespokeethos.com/og-logo.png',
+    telephone: '[INSERT BUSINESS PHONE]',
+    priceRange: '$$-$$$',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'West 111th St.',
+      addressLocality: 'Cleveland',
+      addressRegion: 'OH',
+      postalCode: '44111',
+      addressCountry: 'US'
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: '[INSERT LAT]',
+      longitude: '[INSERT LONG]'
+    },
+    areaServed: [
+      {
+        '@type': 'City',
+        name: 'Cleveland'
+      },
+      {
+        '@type': 'State',
+        name: 'Ohio'
+      }
+    ],
+    founder: {
+      '@type': 'Person',
+      name: 'Upton Rand',
+      jobTitle: 'AI Consultant & Founder',
+      description: 'Former Appen AI trainer with 10+ years experience training ChatGPT, Claude, and Copilot models'
+    },
+    sameAs: [
+      'https://www.linkedin.com/in/upton-rand',
+      '#',
+      '#'
+    ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'AI Consulting Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'AI Workflow Automation',
+            description: 'Direct experience training ChatGPT, Claude, and Copilot. Workflow small teams can own and maintain.'
+          }
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Team Training',
+            description: 'Small team AI training with no MBA Ph.D. required.'
+          }
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Human-in-the-Loop AI Implementation',
+            description: 'No off-the-shelf packages. Human-in-the-loop without heavy payroll costs.'
+          }
+        }
+      ]
+    },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:00',
+        closes: '17:00'
+      }
+    ],
+    paymentAccepted: ['Cash', 'Credit Card', 'Invoice'],
+    currenciesAccepted: 'USD',
     contactPoint: [
       {
         '@type': 'ContactPoint',
@@ -86,15 +164,12 @@ for (let i = 0; i < segments.length; i++) {
     ]
   })}
 </script>
-<script type="application/ld+json">
-  {JSON.stringify({
+<script type="application/ld+json" set:html={JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: breadcrumbItems,
-  })}
-</script>
-<script type="application/ld+json">
-  {JSON.stringify({
+  })}></script>
+<script type="application/ld+json" set:html={JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     url: settings.url,
@@ -108,8 +183,7 @@ for (let i = 0; i < segments.length; i++) {
       }
     },
     inLanguage: 'en-US'
-  })}
-</script>
+  })}></script>
 <script>
   var host = window.location.hostname;
   if(host != 'localhost') {

@@ -12,6 +12,65 @@ const seo = {
 ---
 
 <Layout seo={seo}>
+	<!-- Service Schemas for Services Page -->
+	<script type="application/ld+json" set:html={JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'Service',
+		serviceType: 'AI Sherpa Services',
+		provider: {
+			'@type': 'ProfessionalService',
+			name: 'Bespoke Ethos'
+		},
+		areaServed: {
+			'@type': 'City',
+			name: 'Cleveland'
+		},
+		description: 'Guides nontechnical owners through tool selection, integration, and governance so AI works where it matters most. Includes technology assessment, integration planning, governance framework development, and ongoing strategy consulting.',
+		offers: {
+			'@type': 'Offer',
+			availability: 'https://schema.org/InStock',
+			priceCurrency: 'USD'
+		}
+	})}></script>
+	<script type="application/ld+json" set:html={JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'Service',
+		serviceType: 'Workflow Automation',
+		provider: {
+			'@type': 'ProfessionalService',
+			name: 'Bespoke Ethos'
+		},
+		areaServed: {
+			'@type': 'City',
+			name: 'Cleveland'
+		},
+		description: 'End-to-end integration that connects chat models, data stores, and automation triggers into reliable business processes. Includes process analysis, custom development, system integration, testing, and documentation.',
+		offers: {
+			'@type': 'Offer',
+			availability: 'https://schema.org/InStock',
+			priceCurrency: 'USD'
+		}
+	})}></script>
+	<script type="application/ld+json" set:html={JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'Service',
+		serviceType: 'Small Business AI Integration',
+		provider: {
+			'@type': 'ProfessionalService',
+			name: 'Bespoke Ethos'
+		},
+		areaServed: {
+			'@type': 'City',
+			name: 'Cleveland'
+		},
+		description: 'Transform AI capability into usable, auditable workflows that small teams can run and maintain without an ML PhD. Includes team training, maintainable system design, audit trail implementation, and human-in-the-loop safeguards.',
+		offers: {
+			'@type': 'Offer',
+			availability: 'https://schema.org/InStock',
+			priceCurrency: 'USD'
+		}
+	})}></script>
+
 	<Container>
 		<section class="services-hero__section">
 			<div class="services-hero__badge">

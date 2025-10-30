@@ -1,0 +1,243 @@
+---
+import Layout from '../layouts/Page.astro';
+import { Container } from '@components/odyssey-theme';
+
+const seo = {
+	title: 'FAQ | Bespoke Ethos',
+	description: 'Frequently asked questions about AI automation and consulting services',
+};
+
+const faqs = [
+	{
+		question: 'What is AI automation?',
+		answer: 'AI automation uses artificial intelligence to automate repetitive business tasks and workflows. Our approach focuses on practical implementations that small teams can understand, maintain, and control without requiring advanced technical expertise.'
+	},
+	{
+		question: 'Do I need technical expertise to use AI automation?',
+		answer: 'No. Our solutions are designed specifically for non-technical business owners and small teams. We handle the technical complexity while you maintain control through human-in-the-loop systems with clear oversight and audit trails.'
+	},
+	{
+		question: 'How long does implementation typically take?',
+		answer: 'Implementation timelines vary based on the complexity of your workflows and business needs. We follow a structured approach: Discovery (1-2 weeks), Strategy (1-2 weeks), Implementation (2-4 weeks), and Handoff & Support (ongoing). We discuss specific timelines during your initial consultation.'
+	},
+	{
+		question: 'What models do you work with?',
+		answer: 'We have direct experience training and implementing ChatGPT, Claude, and Copilot. Our team has over a decade of hands-on experience with these models, and we select the best tool for your specific use case.'
+	},
+	{
+		question: 'How much does AI automation cost?',
+		answer: 'Pricing depends on the scope and complexity of your automation needs. We offer flexible engagement models ranging from consulting to full implementation. Schedule a consultation to discuss your specific requirements and budget.'
+	},
+	{
+		question: 'Will automation replace my team?',
+		answer: 'No. Our philosophy is to augment, not replace. AI automation is designed to remove repetitive busywork so your team can focus on higher-value activities like customer relationships, strategic decisions, and creative work.'
+	},
+	{
+		question: 'How do you ensure my data is secure?',
+		answer: 'Security and data governance are built into every solution we design. We implement audit trails, human checkpoints, and clear data handling procedures. Your data remains under your control with transparent processes you can verify and maintain.'
+	},
+	{
+		question: 'What happens after implementation?',
+		answer: 'We provide comprehensive handoff with full documentation and training for your team. We also offer ongoing support to ensure your systems continue to work effectively and to help you optimize based on real-world usage.'
+	}
+];
+---
+
+<Layout seo={seo}>
+	<!-- FAQPage Schema -->
+	<script type="application/ld+json" set:html={JSON.stringify({
+			'@context': 'https://schema.org',
+			'@type': 'FAQPage',
+			mainEntity: faqs.map(faq => ({
+				'@type': 'Question',
+				name: faq.question,
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: faq.answer
+				}
+			}))
+		})}></script>
+
+	<Container>
+		<section class="faq-hero__section">
+			<h1>Frequently Asked Questions</h1>
+			<p class="faq-hero__subtitle">Find answers to common questions about AI automation and our services</p>
+		</section>
+	</Container>
+
+	<!-- FAQ Content -->
+	<Container>
+		<section class="faq-section">
+			<div class="faq-grid">
+				{faqs.map((faq, index) => (
+					<div class="faq-item" key={index}>
+						<details>
+							<summary class="faq-question">{faq.question}</summary>
+							<div class="faq-answer">
+								<p>{faq.answer}</p>
+							</div>
+						</details>
+					</div>
+				))}
+			</div>
+		</section>
+	</Container>
+
+	<!-- CTA Section -->
+	<Container>
+		<section class="cta-section">
+			<h2>Still Have Questions?</h2>
+			<p>Let's discuss how AI automation can transform your business.</p>
+			<a href="/company/contact" class="cta-button">Schedule a Consultation</a>
+		</section>
+	</Container>
+</Layout>
+
+<style>
+	/* Hero Section */
+	.faq-hero__section {
+		margin: var(--section-margin) auto;
+		padding: 4rem 0 3rem;
+		text-align: center;
+		max-width: 800px;
+	}
+
+	.faq-hero__section h1 {
+		font-size: clamp(2.5rem, 5vw, 3.5rem);
+		margin-bottom: 1rem;
+		font-weight: 800;
+	}
+
+	.faq-hero__subtitle {
+		font-size: 1.25rem;
+		color: var(--theme-text-secondary);
+		line-height: 1.6;
+	}
+
+	/* FAQ Section */
+	.faq-section {
+		margin: var(--section-margin) auto;
+		padding: 4rem 0;
+	}
+
+	.faq-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+		max-width: 800px;
+		margin: 0 auto;
+	}
+
+	.faq-item {
+		border: 1px solid var(--theme-surface-2);
+		border-radius: var(--theme-shape-radius);
+		overflow: hidden;
+	}
+
+	.faq-item details {
+		padding: 0;
+	}
+
+	.faq-item details[open] {
+		background: var(--theme-surface-1);
+	}
+
+	.faq-question {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 1.5rem;
+		cursor: pointer;
+		font-weight: 600;
+		font-size: 1.125rem;
+		color: var(--theme-text);
+		user-select: none;
+		transition: background-color 0.2s ease;
+	}
+
+	.faq-question:hover {
+		background: var(--theme-surface-1);
+	}
+
+	.faq-item details[open] .faq-question {
+		border-bottom: 1px solid var(--theme-surface-2);
+	}
+
+	.faq-question::after {
+		content: '▼';
+		font-size: 0.75rem;
+		color: var(--theme-primary);
+		margin-left: 1rem;
+		transition: transform 0.2s ease;
+	}
+
+	.faq-item details[open] .faq-question::after {
+		transform: rotate(180deg);
+	}
+
+	.faq-answer {
+		padding: 1.5rem;
+		color: var(--theme-text-secondary);
+		line-height: 1.8;
+	}
+
+	.faq-answer p {
+		margin: 0;
+	}
+
+	/* CTA Section */
+	.cta-section {
+		margin: var(--section-margin) auto;
+		padding: 4rem 2rem;
+		text-align: center;
+		background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-primary-hover) 100%);
+		border-radius: var(--theme-shape-radius);
+		color: white;
+	}
+
+	.cta-section h2 {
+		color: white;
+		margin-bottom: 1rem;
+	}
+
+	.cta-section p {
+		font-size: 1.25rem;
+		margin-bottom: 2rem;
+		opacity: 0.95;
+	}
+
+	.cta-button {
+		display: inline-block;
+		padding: 1rem 2rem;
+		background: white;
+		color: var(--theme-primary);
+		border-radius: var(--theme-button-border-radius);
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.2s ease;
+	}
+
+	.cta-button:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	}
+
+	@media (max-width: 768px) {
+		.faq-hero__section h1 {
+			font-size: 2rem;
+		}
+
+		.faq-question {
+			padding: 1.25rem;
+			font-size: 1rem;
+		}
+
+		.faq-answer {
+			padding: 1.25rem;
+		}
+
+		.cta-section {
+			padding: 3rem 1.5rem;
+		}
+	}
+</style>

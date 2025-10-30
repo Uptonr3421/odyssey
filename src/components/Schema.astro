@@ -1,0 +1,18 @@
+---
+/**
+ * Schema Component
+ * Renders JSON-LD structured data for SEO and rich results
+ * 
+ * Usage:
+ * import Schema from '../components/Schema.astro';
+ * <Schema schema={organizationSchema} />
+ */
+
+export interface Props {
+  schema: Record<string, any>;
+}
+
+const { schema } = Astro.props;
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
