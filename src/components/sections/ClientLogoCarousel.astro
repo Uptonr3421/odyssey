@@ -1,0 +1,90 @@
+---
+import { Container } from '@components/odyssey-theme';
+import { Image } from 'astro:assets';
+
+import logo1 from '@assets/images/clients/client-logo-1.png';
+import logo2 from '@assets/images/clients/client-logo-2.png';
+import logo3 from '@assets/images/clients/client-logo-3.png';
+import logo4 from '@assets/images/clients/client-logo-4.png';
+
+const logos = [
+	{ src: logo1, alt: 'Innovate Solutions Logo' },
+	{ src: logo2, alt: 'Precision Dynamics Logo' },
+	{ src: logo3, alt: 'Summit Services Logo' },
+	{ src: logo4, alt: 'Urban Threads Logo' },
+];
+---
+
+<Container>
+	<div class="logo-carousel__container">
+		<p class="logo-carousel__title">Trusted by Cleveland's Leading SMBs</p>
+		<div class="logo-carousel__logos">
+			{logos.map((logo) => (
+				<div class="logo-carousel__logo-item">
+					<Image
+						src={logo.src}
+						alt={logo.alt}
+						width={100}
+						height={100}
+						loading="lazy"
+					/>
+				</div>
+			))}
+		</div>
+	</div>
+</Container>
+
+<style>
+	.logo-carousel__container {
+		margin: 4rem auto 0;
+		text-align: center;
+		padding-top: 2rem;
+		border-top: 1px solid var(--theme-surface-2);
+	}
+	.logo-carousel__title {
+		font-size: 0.9rem;
+		font-weight: 600;
+		color: var(--theme-text-secondary);
+		margin-bottom: 2rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+	.logo-carousel__logos {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 2rem;
+		flex-wrap: wrap;
+	}
+	.logo-carousel__logo-item {
+		width: 100px;
+		height: 100px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.5rem;
+		opacity: 0.6;
+		transition: opacity 0.3s ease;
+	}
+	.logo-carousel__logo-item:hover {
+		opacity: 1;
+	}
+	.logo-carousel__logo-item img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+
+	@media (max-width: 768px) {
+		.logo-carousel__container {
+			margin-top: 2rem;
+		}
+		.logo-carousel__logos {
+			gap: 1rem;
+		}
+		.logo-carousel__logo-item {
+			width: 80px;
+			height: 80px;
+		}
+	}
+</style>
