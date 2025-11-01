@@ -6,7 +6,19 @@ import TextCardSection from '../components/sections/TextCardSection.astro';
 import { Container } from '@components/odyssey-theme';
 import { Icon } from 'astro-icon/components';
 
-const organizationSchema = {
+const personSchema = {
+		'@context': 'https://schema.org',
+		'@type': 'Person',
+		name: 'Upton Rand',
+		url: 'https://www.linkedin.com/in/upton-rand',
+		sameAs: [
+			'https://www.linkedin.com/in/upton-rand',
+			'https://www.amazon.com/stores/author/B0DB1RGQ2Y/about?ingress=0&visitId=2a41f0fe-6c43-4b3d-8186-e2a4560b6e7b&ref_=ap_rdr',
+		],
+		jobTitle: 'AI Trainer, Practitioner, Sherpa',
+	};
+
+	const organizationSchema = {
 		'@context': 'https://schema.org',
 		'@type': 'Organization',
 		name: 'Bespoke Ethos',
@@ -27,6 +39,7 @@ const organizationSchema = {
 
 <Layout seo={seo}>
 		<Schema schema={organizationSchema} />
+		<Schema schema={personSchema} />
 	<!-- Service Schemas for Homepage Services -->
 	<script type="application/ld+json" set:html={JSON.stringify({
 		'@context': 'https://schema.org',
