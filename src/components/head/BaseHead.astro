@@ -13,8 +13,8 @@ export interface Props {
 
 const title = Astro.props.title || settings.title;
 const description = Astro.props.description || settings.description;
-const canonicalURL = Astro.props.canonicalURL || new URL(Astro.url.pathname, Astro.site);
-const image = new URL(Astro.props.image || './og-logo.png', Astro.site);
+const canonicalURL = Astro.props.canonicalURL || (Astro.site ? new URL(Astro.url.pathname, Astro.site) : Astro.url.pathname);
+const image = Astro.site ? new URL(Astro.props.image || './og-logo.png', Astro.site) : (Astro.props.image || './og-logo.png');
 
 // Build BreadcrumbList from current path
 function titleCase(segment) {
@@ -25,7 +25,7 @@ function titleCase(segment) {
 const segments = Astro.url.pathname.split('/').filter(Boolean);
 let cumulative = '';
 const breadcrumbItems = [
-  { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+  { '@type': 'ListItem', position: 1, name: 'Home', item: Astro.site ? new URL('/', Astro.site).toString() : '/' },
 ];
 for (let i = 0; i < segments.length; i++) {
   cumulative += '/' + segments[i];
@@ -33,7 +33,7 @@ for (let i = 0; i < segments.length; i++) {
     '@type': 'ListItem',
     position: i + 2,
     name: titleCase(segments[i]),
-    item: new URL(cumulative, Astro.site).toString(),
+    item: Astro.site ? new URL(cumulative, Astro.site).toString() : cumulative,
   });
 }
 ---
@@ -48,7 +48,7 @@ for (let i = 0; i < segments.length; i++) {
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
-<link rel="canonical" href={canonicalURL} />
+<!-- Canonical URL removed as per user request -->
 <!-- Generator -->
 <meta name="generator" content={Astro.generator} />
 <!-- Open Graph / Facebook -->
@@ -69,7 +69,7 @@ for (let i = 0; i < segments.length; i++) {
 {settings.enableThemeSwitcher && <ThemeProvider />}
 
 <!-- Organization & LocalBusiness Schema -->
-<script type="application/ld+json" set:html={JSON.stringify({
+<!-- REMOVED SCHEMA AS PER USER REQUEST
     '@context': 'https://schema.org',
     '@type': ['ProfessionalService', 'LocalBusiness'],
     name: 'Bespoke Ethos',
@@ -164,12 +164,12 @@ for (let i = 0; i < segments.length; i++) {
     ]
   })}
 </script>
-<script type="application/ld+json" set:html={JSON.stringify({
+<!-- REMOVED SCHEMA AS PER USER REQUEST
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: breadcrumbItems,
-  })}></script>
-<script type="application/ld+json" set:html={JSON.stringify({
+-->
+<!-- REMOVED SCHEMA AS PER USER REQUEST
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     url: settings.url,
@@ -183,7 +183,7 @@ for (let i = 0; i < segments.length; i++) {
       }
     },
     inLanguage: 'en-US'
-  })}></script>
+-->
 <script>
   var host = window.location.hostname;
   if(host != 'localhost') {

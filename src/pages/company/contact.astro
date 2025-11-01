@@ -18,21 +18,14 @@ const seo = {
 					Ready to automate your busywork and amplify your revenue? Let's discuss how Bespoke Ethos can transform your business operations.
 				</p>
 				<div class="contact-btns__container">
-					<Button href="mailto:contact@bespokeethos.com?subject=webcontact" customIcon aria-label="Email Bespoke Ethos">
-						Email Us
-						<Fragment slot="icon">
-							<Icon name="mdi:email"/>
-						</Fragment>
-					</Button>
+						<Button href="/services" customIcon aria-label="Explore Services">
+							Explore Services
+							<Fragment slot="icon">
+								<Icon name="mdi:arrow-right"/>
+							</Fragment>
+						</Button>
 				</div>
-				<div>
-					<p>
-						<em><a href="mailto:contact@bespokeethos.com?subject=webcontact">contact@bespokeethos.com</a></em>
-						<button id="copyEmail" type="button" aria-label="Copy email address" style="margin-left: 0.5rem;">
-							Copy
-						</button>
-					</p>
-				</div>
+					<!-- Contact information removed as per user request -->
 			</div>
 		</section>
 	</Container>
@@ -57,14 +50,5 @@ const seo = {
 </style>
 
 <script>
-	const copyButton = document.getElementById('copyEmail');
-	if (copyButton) {
-		copyButton.addEventListener('click', async () => {
-			try {
-				await navigator.clipboard.writeText('contact@bespokeethos.com');
-				copyButton.textContent = 'Copied!';
-				setTimeout(() => (copyButton.textContent = 'Copy'), 2000);
-			} catch {}
-		});
-	}
+		// Removed email copy script as per user request
 </script>

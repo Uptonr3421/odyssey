@@ -6,98 +6,98 @@ import TextCardSection from '../components/sections/TextCardSection.astro';
 import { Container } from '@components/odyssey-theme';
 import { Icon } from 'astro-icon/components';
 
-const personSchema = {
-		'@context': 'https://schema.org',
-		'@type': 'Person',
-		name: 'Upton Rand',
-		url: 'https://www.linkedin.com/in/upton-rand',
-		sameAs: [
-			'https://www.linkedin.com/in/upton-rand',
-			'https://www.amazon.com/stores/author/B0DB1RGQ2Y/about?ingress=0&visitId=2a41f0fe-6c43-4b3d-8186-e2a4560b6e7b&ref_=ap_rdr',
-		],
-		jobTitle: 'AI Trainer, Practitioner, Sherpa',
-	};
+// const personSchema = {
+// 			'@context': 'https://schema.org',
+// 			'@type': 'Person',
+// 			name: 'Upton Rand',
+// 			url: 'https://www.linkedin.com/in/upton-rand',
+// 			sameAs: [
+// 				'https://www.linkedin.com/in/upton-rand',
+// 				'https://www.amazon.com/stores/author/B0DB1RGQ2Y/about?ingress=0&visitId=2a41f0fe-6c43-4b3d-8186-e2a4560b6e7b&ref_=ap_rdr',
+// 			],
+// 			jobTitle: 'AI Trainer, Practitioner, Sherpa',
+// };
 
-	const organizationSchema = {
-		'@context': 'https://schema.org',
-		'@type': 'Organization',
-		name: 'Bespoke Ethos',
-		url: 'https://bespokeethos.com', // Assuming this is the final domain
-		logo: 'https://bespokeethos.com/assets/images/logo.svg', // Assuming a logo path
-		sameAs: [
-			'https://www.linkedin.com/company/bespoke-ethos', // Assuming a company LinkedIn
-			'https://twitter.com/BespokeEthos', // Assuming a Twitter
-		],
-		description: 'Expert AI consulting and workflow automation for small and medium businesses (SMBs). We build auditable, maintainable AI solutions that amplify human effort.',
-	};
+// const organizationSchema = {
+// 			'@context': 'https://schema.org',
+// 			'@type': 'Organization',
+// 			name: 'Bespoke Ethos',
+// 			url: 'https://bespokeethos.com', // Assuming this is the final domain
+// 			logo: 'https://bespokeethos.com/assets/images/logo.svg', // Assuming a logo path
+// 			sameAs: [
+// 				'https://www.linkedin.com/company/bespoke-ethos', // Assuming a company LinkedIn
+// 				'https://twitter.com/BespokeEthos', // Assuming a Twitter
+// 			],
+// 			description: 'Expert AI consulting and workflow automation for small and medium businesses (SMBs). We build auditable, maintainable AI solutions that amplify human effort.',
+// };
 
-	const seo = {
-	title: 'Bespoke AI Consulting for SMBs | AI Workflow Automation | Bespoke Ethos',
+const seo = {
+	title: 'Bespoke AI Consulting for SMBs | AI Workflow Automation',
 	description: 'Expert AI consulting specializing in auditable AI workflows and automation for small and medium businesses (SMBs). We build the AI our competition sells. Schedule a free AI assessment today.',
 };
 ---
 
 <Layout seo={seo}>
-		<Schema schema={organizationSchema} />
-		<Schema schema={personSchema} />
-	<!-- Service Schemas for Homepage Services -->
-	<script type="application/ld+json" set:html={JSON.stringify({
-		'@context': 'https://schema.org',
-		'@type': 'Service',
-		serviceType: 'AI Sherpa Services',
-		provider: {
-			'@type': 'ProfessionalService',
-			name: 'Bespoke Ethos'
-		},
-		areaServed: {
-			'@type': 'City',
-			name: 'Cleveland'
-		},
-		description: 'Guide nontechnical owners through tool selection, integration, and governance so AI works where it matters most.',
-		offers: {
-			'@type': 'Offer',
-			availability: 'https://schema.org/InStock',
-			priceCurrency: 'USD'
-		}
-	})}></script>
-	<script type="application/ld+json" set:html={JSON.stringify({
-		'@context': 'https://schema.org',
-		'@type': 'Service',
-		serviceType: 'Workflow Automation',
-		provider: {
-			'@type': 'ProfessionalService',
-			name: 'Bespoke Ethos'
-		},
-		areaServed: {
-			'@type': 'City',
-			name: 'Cleveland'
-		},
-		description: 'End-to-end integration connecting chat models, data stores, and automation triggers into reliable business processes.',
-		offers: {
-			'@type': 'Offer',
-			availability: 'https://schema.org/InStock',
-			priceCurrency: 'USD'
-		}
-	})}></script>
-	<script type="application/ld+json" set:html={JSON.stringify({
-		'@context': 'https://schema.org',
-		'@type': 'Service',
-		serviceType: 'Small Business AI Integration',
-		provider: {
-			'@type': 'ProfessionalService',
-			name: 'Bespoke Ethos'
-		},
-		areaServed: {
-			'@type': 'City',
-			name: 'Cleveland'
-		},
-		description: 'Transform AI capability into usable, auditable workflows that your team can run and maintain.',
-		offers: {
-			'@type': 'Offer',
-			availability: 'https://schema.org/InStock',
-			priceCurrency: 'USD'
-		}
-	})}></script>
+	<!-- Schema removed as per user request -->
+	<!-- Schema removed as per user request -->
+	<!-- Service Schemas for Homepage Services - REMOVED AS PER USER REQUEST -->
+<!-- Service Schema removed as per user request
+			'@context': 'https://schema.org',
+			'@type': 'Service',
+			serviceType: 'AI Sherpa Services',
+			provider: {
+				'@type': 'ProfessionalService',
+				name: 'Bespoke Ethos'
+			},
+			areaServed: {
+				'@type': 'City',
+				name: 'Cleveland'
+			},
+			description: 'Guide nontechnical owners through tool selection, integration, and governance so AI works where it matters most.',
+			offers: {
+				'@type': 'Offer',
+				availability: 'https://schema.org/InStock',
+				priceCurrency: 'USD'
+			}
+-->
+<!-- Service Schema removed as per user request
+			'@context': 'https://schema.org',
+			'@type': 'Service',
+			serviceType: 'Workflow Automation',
+			provider: {
+				'@type': 'ProfessionalService',
+				name: 'Bespoke Ethos'
+			},
+			areaServed: {
+				'@type': 'City',
+				name: 'Cleveland'
+			},
+			description: 'End-to-end integration connecting chat models, data stores, and automation triggers into reliable business processes.',
+			offers: {
+				'@type': 'Offer',
+				availability: 'https://schema.org/InStock',
+				priceCurrency: 'USD'
+			}
+-->
+<!-- Service Schema removed as per user request
+			'@context': 'https://schema.org',
+			'@type': 'Service',
+			serviceType: 'Small Business AI Integration',
+			provider: {
+				'@type': 'ProfessionalService',
+				name: 'Bespoke Ethos'
+			},
+			areaServed: {
+				'@type': 'City',
+				name: 'Cleveland'
+			},
+			description: 'Transform AI capability into usable, auditable workflows that your team can run and maintain.',
+			offers: {
+				'@type': 'Offer',
+				availability: 'https://schema.org/InStock',
+				priceCurrency: 'USD'
+			}
+-->
 
 	<HomeHeroSection />
 
@@ -266,15 +266,28 @@ const personSchema = {
 	}
 	.feature-grid__grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 2rem;
-		margin-top: 2rem;
+		grid-template-columns: 1fr; /* Mobile-first: 1 column by default */
+		gap: 1.5rem;
+		margin-top: 1.5rem;
+	}
+	@media (min-width: 768px) {
+		.feature-grid__grid {
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 2rem;
+			margin-top: 2rem;
+		}
 	}
 	.feature-grid__item {
-		padding: 2rem;
-		border-radius: var(--theme-shape-radius);
+		padding: 1.5rem; /* Slightly smaller padding for mobile */
+		border-radius: 0.75rem; /* Sharper corners for a modern look, but still rounded */
 		background: var(--theme-surface-1);
 		transition: transform 0.2s ease, box-shadow 0.2s ease;
+	}
+	@media (min-width: 768px) {
+		.feature-grid__item {
+			padding: 2rem;
+			border-radius: var(--theme-shape-radius);
+		}
 	}
 	.feature-grid__item:hover {
 		transform: translateY(-4px);
@@ -315,13 +328,18 @@ const personSchema = {
 	}
 	.value-prop__section h2 {
 		margin-bottom: 3rem;
-		font-size: 2.5rem;
 	}
 	.value-prop__grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		gap: 2rem;
+		grid-template-columns: 1fr; /* Stack on mobile */
+		gap: 1.5rem;
 		text-align: left;
+	}
+	@media (min-width: 640px) {
+		.value-prop__grid {
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 2rem;
+		}
 	}
 	.value-prop__item {
 		padding: 1.5rem;
@@ -338,9 +356,16 @@ const personSchema = {
 	/* Philosophy */
 	.philosophy__grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		gap: 2rem;
-		margin-top: 2rem;
+		grid-template-columns: 1fr; /* Stack on mobile */
+		gap: 1.5rem;
+		margin-top: 1.5rem;
+	}
+	@media (min-width: 640px) {
+		.philosophy__grid {
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 2rem;
+			margin-top: 2rem;
+		}
 	}
 	.philosophy__item {
 		text-align: center;
@@ -357,11 +382,17 @@ const personSchema = {
 	/* CTA Section */
 	.cta__section {
 		margin: var(--section-margin) auto;
-		padding: 4rem 2rem;
+		padding: 2rem 1rem; /* Mobile-first padding */
 		text-align: center;
 		background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-primary-hover) 100%);
-		border-radius: var(--theme-shape-radius);
+		border-radius: 0.75rem; /* Sharper corners for mobile */
 		color: white;
+	}
+	@media (min-width: 768px) {
+		.cta__section {
+			padding: 4rem 2rem;
+			border-radius: var(--theme-shape-radius);
+		}
 	}
 	.cta__section h2 {
 		color: white;
@@ -374,34 +405,15 @@ const personSchema = {
 	}
 	.cta__buttons {
 		display: flex;
+		flex-direction: column; /* Stack buttons on mobile */
 		gap: 1rem;
 		justify-content: center;
 		flex-wrap: wrap;
 	}
-	.cta-button {
-		display: inline-block;
-		padding: 1rem 2rem;
-		border-radius: var(--theme-button-border-radius);
-		text-decoration: none;
-		font-weight: 600;
-		transition: all 0.2s ease;
-	}
-	.cta-button--primary {
-		background: white;
-		color: var(--theme-primary);
-	}
-	.cta-button--primary:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-	}
-	.cta-button--secondary {
-		background: transparent;
-		color: white;
-		border: 2px solid white;
-	}
-	.cta-button--secondary:hover {
-		background: white;
-		color: var(--theme-primary);
+	@media (min-width: 640px) {
+		.cta__buttons {
+			flex-direction: row; /* Side-by-side on larger screens */
+		}
 	}
 
 	@media (max-width: 768px) {
