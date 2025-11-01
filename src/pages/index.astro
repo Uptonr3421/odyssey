@@ -6,13 +6,27 @@ import TextCardSection from '../components/sections/TextCardSection.astro';
 import { Container } from '@components/odyssey-theme';
 import { Icon } from 'astro-icon/components';
 
-const seo = {
-	title: 'Cleveland AI Consulting for SMBs | Get a Free AI Assessment | Bespoke Ethos',
-	description: 'Expert AI consulting in Cleveland, OH, specializing in auditable AI workflows for small and medium businesses (SMBs). Schedule a free AI assessment today.',
+const organizationSchema = {
+		'@context': 'https://schema.org',
+		'@type': 'Organization',
+		name: 'Bespoke Ethos',
+		url: 'https://bespokeethos.com', // Assuming this is the final domain
+		logo: 'https://bespokeethos.com/assets/images/logo.svg', // Assuming a logo path
+		sameAs: [
+			'https://www.linkedin.com/company/bespoke-ethos', // Assuming a company LinkedIn
+			'https://twitter.com/BespokeEthos', // Assuming a Twitter
+		],
+		description: 'Expert AI consulting and workflow automation for small and medium businesses (SMBs). We build auditable, maintainable AI solutions that amplify human effort.',
+	};
+
+	const seo = {
+	title: 'Bespoke AI Consulting for SMBs | AI Workflow Automation | Bespoke Ethos',
+	description: 'Expert AI consulting specializing in auditable AI workflows and automation for small and medium businesses (SMBs). We build the AI our competition sells. Schedule a free AI assessment today.',
 };
 ---
 
 <Layout seo={seo}>
+		<Schema schema={organizationSchema} />
 	<!-- Service Schemas for Homepage Services -->
 	<script type="application/ld+json" set:html={JSON.stringify({
 		'@context': 'https://schema.org',
