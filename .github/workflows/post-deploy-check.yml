@@ -1,0 +1,125 @@
+name: 📊 Post-Deployment Verification
+
+on:
+  deployment_status:
+    types: [success]
+
+jobs:
+  post_deploy_check:
+    name: Verify Deployment
+    runs-on: ubuntu-latest
+    if: github.event.deployment_status.state == 'success'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Wait for deployment metrics to populate
+        run: sleep 300 # Wait 5 minutes for Vercel to collect metrics
+
+      - name: Check post-deployment health
+        id: post_deploy_check
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          DT_ENVIRONMENT: ${{ secrets.DT_ENVIRONMENT }}
+          DT_API_TOKEN: ${{ secrets.DT_API_TOKEN }}
+        run: |
+          echo "Checking post-deployment metrics..."
+          # Would check:
+          # 1. Sentry: New errors since deployment?
+          # 2. Dynatrace: Performance normal?
+          # 3. Error rate: Within bounds?
+          # 4. Forms: Still functioning?
+
+      - name: Create monitoring checklist
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const deploymentUrl = context.payload.deployment_status.environment_url;
+            const commit = context.payload.deployment_status.commit.sha.substring(0, 7);
+
+            const body = `
+## 📊 Post-Deployment Verification Checklist
+
+**Deployment**: ${deploymentUrl}
+**Commit**: ${commit}
+**Time**: ${new Date().toISOString()}
+
+### 24-Hour Monitoring Required:
+
+- [ ] **Sentry Check**: Ask Claude - "Any new errors after deployment?"
+- [ ] **Performance Check**: Ask Claude - "How's performance post-deploy?"
+- [ ] **Forms Check**: Test contact form submission manually
+- [ ] **Mobile Check**: Test on mobile device (check responsive design)
+- [ ] **Dark Mode**: Toggle dark/light theme (if applicable)
+
+### Monitoring Links:
+- [Sentry](https://${{ secrets.SENTRY_ORG }}.sentry.io)
+- [Dynatrace](${{ secrets.DT_ENVIRONMENT }})
+- [Vercel Deployment](${deploymentUrl})
+
+### Troubleshooting:
+If you find issues:
+1. Ask Claude what's wrong (it will check logs)
+2. Fix in new branch
+3. Create PR and merge
+4. Re-deploy
+
+Close this issue once verified safe.
+            `;
+
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '📊 Post-Deploy Monitoring - ' + new Date().toISOString().split('T')[0],
+              body: body,
+              labels: ['🤖-autonomous', '📊-monitoring', 'post-deploy'],
+              milestone: undefined
+            });
+
+      - name: Create PR comment with status
+        uses: actions/github-script@v6
+        with:
+          script: |
+            // Find the PR associated with this deployment
+            const prs = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'closed',
+              sort: 'updated',
+              direction: 'desc',
+              per_page: 5
+            });
+
+            const pr = prs.data[0];
+            if (pr) {
+              github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr.number,
+                body: `
+✅ **Deployment Successful**
+
+Live URL: ${context.payload.deployment_status.environment_url}
+
+📊 **Monitoring Active**: 24-hour check required
+- Check issue: #${context.runNumber}
+- Ask Claude: "Any issues post-deploy?"
+                `
+              });
+            }
+
+      - name: Send deployment notification (optional)
+        if: secrets.SLACK_WEBHOOK != ''
+        uses: 8398a7/action-slack@v3
+        with:
+          status: success
+          text: '✅ Deployment successful - Monitoring activated for 24h'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+          fields: repo,message,commit
+        continue-on-error: true

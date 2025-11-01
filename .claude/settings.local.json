@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx:*)",
+      "Bash(npm search:*)",
+      "Bash(npm view:*)",
+      "Bash(npm info:*)",
+      "Bash(npm audit:*)",
+      "Bash(find:*)",
+      "Bash(cat:*)",
+      "Bash(DYNATRACE_ENVIRONMENT_ID=xyz31392 DYNATRACE_API_TOKEN=\"1d91283d-c0bd-44a0-a448-8a53d9793919@service.sso.dynatrace.com\" npx:*)",
+      "Bash(DT_ENVIRONMENT=\"https://xyz31392.apps.dynatrace.com\" DT_API_TOKEN=\"1d91283d-c0bd-44a0-a448-8a53d9793919@service.sso.dynatrace.com\" npx @dynatrace-oss/dynatrace-mcp-server@0.12.0:*)",
+      "Bash(npm run build:*)",
+      "Bash(magick identify:*)",
+      "Bash(dir:*)",
+      "Bash(nul)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

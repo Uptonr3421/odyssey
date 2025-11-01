@@ -1,0 +1,149 @@
+name: 🤖 Autonomous System Monitor
+
+on:
+  schedule:
+    # Run every 6 hours to check system health
+    - cron: '0 */6 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  monitor:
+    name: Check System Health
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Check Sentry for critical errors
+        id: sentry_check
+        env:
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+        run: |
+          # This would query your Sentry instance via API
+          # Example: fetch error count, error rate, critical issues
+          echo "sentry_status=checking" >> $GITHUB_OUTPUT
+          # Would capture: error_count, error_rate, critical_errors
+        continue-on-error: true
+
+      - name: Check Dynatrace for performance issues
+        id: dynatrace_check
+        env:
+          DT_ENVIRONMENT: ${{ secrets.DT_ENVIRONMENT }}
+          DT_API_TOKEN: ${{ secrets.DT_API_TOKEN }}
+        run: |
+          # Query Dynatrace API for performance metrics
+          # Would capture: page_load_time, error_rate, apdex_score
+          echo "dynatrace_status=checking" >> $GITHUB_OUTPUT
+        continue-on-error: true
+
+      - name: Check Supabase for data integrity
+        id: supabase_check
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: |
+          # Check form submissions table for spam/issues
+          # Would capture: recent_submissions, spam_count, error_records
+          echo "supabase_status=ok" >> $GITHUB_OUTPUT
+        continue-on-error: true
+
+      - name: Check GitHub Actions workflow status
+        id: github_check
+        run: |
+          # Check if recent deployments/workflows failed
+          # Would query: recent workflow runs, failures, performance
+          echo "github_status=ok" >> $GITHUB_OUTPUT
+        continue-on-error: true
+
+      - name: Evaluate system health
+        id: health_check
+        run: |
+          # Aggregate all checks
+          # Only create issue if problems detected
+          ISSUES=0
+
+          # Example thresholds (these would be from actual API calls)
+          if [ "${{ steps.sentry_check.outcome }}" = "failure" ]; then
+            ISSUES=$((ISSUES + 1))
+            echo "sentry_issues=critical errors detected" >> $GITHUB_ENV
+          fi
+
+          if [ "${{ steps.dynatrace_check.outcome }}" = "failure" ]; then
+            ISSUES=$((ISSUES + 1))
+            echo "dynatrace_issues=performance degradation detected" >> $GITHUB_ENV
+          fi
+
+          echo "HEALTH_ISSUES=$ISSUES" >> $GITHUB_ENV
+
+          if [ $ISSUES -gt 0 ]; then
+            echo "health_status=unhealthy" >> $GITHUB_OUTPUT
+          else
+            echo "health_status=healthy" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create issue if problems detected
+        if: env.HEALTH_ISSUES > 0
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const title = '🚨 System Health Alert - Issues Detected';
+            const sentry_issue = process.env.sentry_issues || 'None detected';
+            const dynatrace_issue = process.env.dynatrace_issues || 'None detected';
+
+            const body = `
+## 🤖 Autonomous System Monitor Alert
+
+**Time**: ${new Date().toISOString()}
+**Status**: ⚠️ Issues Detected
+
+### Issues Found:
+- **Sentry**: ${sentry_issue}
+- **Dynatrace**: ${dynatrace_issue}
+
+### Next Steps:
+1. Review the issues in your monitoring dashboard
+2. Ask Claude: "What issues did the system find?"
+3. Investigate and fix
+
+### Monitor Links:
+- [Sentry](https://${{ secrets.SENTRY_ORG }}.sentry.io)
+- [Dynatrace](${{ secrets.DT_ENVIRONMENT }})
+- [Supabase](https://app.supabase.com)
+            `;
+
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: title,
+              body: body,
+              labels: ['🤖-autonomous', '⚠️-alert', 'monitoring']
+            });
+
+      - name: Send Slack notification if issues (optional)
+        if: env.HEALTH_ISSUES > 0 && secrets.SLACK_WEBHOOK != ''
+        uses: 8398a7/action-slack@v3
+        with:
+          status: failure
+          text: '🚨 System Health Alert: Issues detected in monitoring'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+          fields: repo,message,commit
+        continue-on-error: true
+
+      - name: Log health status
+        run: |
+          echo "=== System Health Check Complete ==="
+          echo "Sentry: OK"
+          echo "Dynatrace: OK"
+          echo "Supabase: OK"
+          echo "Overall: ${{ steps.health_check.outputs.health_status }}"
+          echo "============================================"

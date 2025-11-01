@@ -1,0 +1,175 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║          BESPOKE ETHOS DEVELOPER REFERENCE CARD                             ║
+║          Quick Reference - Keep This On Your Screen                         ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+┌─ QUICK START ────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  1. Clone:    git clone [repo] && cd bespokeethos                         │
+│  2. Install:  npm install                                                │
+│  3. Setup:    cp odyssey/.env.example odyssey/.env                       │
+│  4. Edit:     (add credentials to .env)                                  │
+│  5. Dev:      cd odyssey && npm run dev → http://localhost:3000          │
+│  6. Code:     Make changes (Cursor enforces standards)                   │
+│  7. Commit:   git commit (pre-commit hook validates)                     │
+│  8. Push:     git push origin feature/name                               │
+│  9. Deploy:   Merge PR → Vercel auto-deploys → Monitor Sentry            │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ FORBIDDEN (Pre-Commit Hook Blocks) ──────────────────────────────────────┐
+│                                                                             │
+│  ❌ console.log()          → Blocks commit                                │
+│  ❌ Hardcoded secrets      → Blocks commit                                │
+│  ❌ TODO without ticket    → Warning (doesn't block)                      │
+│  ❌ TypeScript errors      → Blocks commit                                │
+│  ❌ ESLint violations      → Blocks commit                                │
+│  ❌ Build fails            → Blocks commit                                │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ COMMIT MESSAGE FORMAT ───────────────────────────────────────────────────┐
+│                                                                             │
+│  [feat]  ContactForm: Add email validation                               │
+│  [fix]   Hero: Fix image scaling on mobile                               │
+│  [perf]  Images: Optimize WebP conversion                                │
+│  [docs]  README: Update setup instructions                               │
+│  [test]  Forms: Add validation tests                                     │
+│  [chore] deps: Update dependencies                                       │
+│  [security] Forms: Add CSRF protection (#TICKET-42)                      │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ ASK CLAUDE ──────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  Morning:           "System status?" (Dynatrace, Sentry, Supabase)       │
+│  After form:        "Any new leads?" (Supabase contacts)                 │
+│  Something broke:   "What's wrong?" (Errors, performance)                │
+│  Update content:    "Sync Notion?" (Pull from Notion to Astro)           │
+│  Before deploy:     "Ready to ship?" (All systems check)                 │
+│  After deploy:      "Any new errors?" (Sentry check)                     │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ IMPORTANT FILES ─────────────────────────────────────────────────────────┐
+│                                                                             │
+│  .cursor/rules/POST_SPRINT_STANDARDS.md     → What's expected            │
+│  .cursor/rules/development.mdc              → What Cursor enforces       │
+│  DEVELOPER_QUICK_START.md                   → Setup & workflow           │
+│  PROCEDURES_MCP_DYNATRACE.md               → Daily procedures           │
+│  CRITICAL_FILES_CHECKLIST.md               → Verify setup               │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ BRANCH NAMING ───────────────────────────────────────────────────────────┐
+│                                                                             │
+│  ✅ feature/add-email-validation                                         │
+│  ✅ fix/form-not-submitting                                              │
+│  ✅ docs/update-readme                                                   │
+│  ❌ my-changes                                                            │
+│  ❌ update                                                                │
+│  ❌ WIP                                                                    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ COMMON COMMANDS ─────────────────────────────────────────────────────────┐
+│                                                                             │
+│  npm run dev              → Start dev server (http://localhost:3000)     │
+│  npm run build            → Test build (must pass)                       │
+│  npm run type-check       → TypeScript check (0 errors required)         │
+│  npm run lint             → ESLint check                                 │
+│  git status               → See what changed                             │
+│  git add .                → Stage changes                                │
+│  git commit -m "[type]    → Commit (hook validates)                      │
+│  git push origin branch   → Push to GitHub                              │
+│  git pull                 → Get latest code                              │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ TOOLS & WHAT THEY DO ────────────────────────────────────────────────────┐
+│                                                                             │
+│  Cursor IDE            → Real-time code checking (red underlines)         │
+│  Pre-commit hook       → Validates before commit                         │
+│  Vercel                → Auto-deploys on merge to main                   │
+│  Sentry                → Auto-tracks errors                              │
+│  Dynatrace             → Auto-monitors performance                       │
+│  Supabase              → Auto-saves form submissions                     │
+│  GitHub Actions        → Runs tests on PR                               │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ FORM FIELD TEMPLATE ─────────────────────────────────────────────────────┐
+│                                                                             │
+│  <FormInput                                                                │
+│    type="email"              (text, email, tel, etc)                     │
+│    label="Email"             (visible label)                             │
+│    name="email"              (form field name)                           │
+│    required={true}           (is required)                               │
+│    maxlength="254"           (max characters)                            │
+│    autocomplete="email"      (browser autocomplete hint)                 │
+│    inputmode="email"         (mobile keyboard type)                      │
+│  />                                                                       │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ DEPLOYMENT FLOW ─────────────────────────────────────────────────────────┐
+│                                                                             │
+│  Code Complete                                                             │
+│       ↓                                                                     │
+│  Local Tests Pass                                                          │
+│       ↓                                                                     │
+│  git commit (pre-commit hook ✓)                                           │
+│       ↓                                                                     │
+│  git push (GitHub Actions runs)                                           │
+│       ↓                                                                     │
+│  PR Review (team approves)                                               │
+│       ↓                                                                     │
+│  Merge to main (Vercel auto-deploys)                                     │
+│       ↓                                                                     │
+│  Verify in Sentry (check for errors)                                     │
+│       ↓                                                                     │
+│  Monitor Dynatrace (check performance)                                   │
+│       ↓                                                                     │
+│  ✅ Live in Production                                                    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ IF SOMETHING BREAKS ─────────────────────────────────────────────────────┐
+│                                                                             │
+│  1. Read the error message (usually tells you what's wrong)              │
+│  2. Check the file mentioned (usually has typo or missing import)        │
+│  3. Run: npm run build (to debug locally)                                │
+│  4. Fix it                                                                │
+│  5. Try commit again                                                      │
+│                                                                             │
+│  Common Issues:                                                            │
+│  • "Cannot read property X of undefined"      → Add null check           │
+│  • "Type X is not assignable to type Y"       → Fix type mismatch        │
+│  • "Cannot find module X"                     → Check import path        │
+│  • "console.log found"                        → Remove it                │
+│  • "Build failed"                             → Read full error message  │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─ GOLDEN RULES ────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  1. Never commit to main directly (always PR)                            │
+│  2. Fix Cursor's red underlines BEFORE committing                        │
+│  3. Pre-commit hook is your friend (learn from its feedback)             │
+│  4. Test locally before pushing                                           │
+│  5. Use environment variables (never hardcode secrets)                   │
+│  6. Write clear commit messages (future you will thank you)             │
+│  7. Ask for help when stuck (don't spin your wheels)                     │
+│  8. Monitor after deploy (check Sentry for 24h)                         │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+═════════════════════════════════════════════════════════════════════════════
+
+NEED HELP?
+  • Read: DEVELOPER_QUICK_START.md (in repo root)
+  • Check: CRITICAL_FILES_CHECKLIST.md (for setup issues)
+  • Ask: Claude (for technical questions)
+  • Slack: Team (for project-specific questions)
+
+═════════════════════════════════════════════════════════════════════════════

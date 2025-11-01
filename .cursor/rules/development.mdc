@@ -1,0 +1,390 @@
+# Cursor Development Rules
+# Enforces POST_SPRINT_STANDARDS in real-time
+
+## Auto-Fix Rules (Cursor applies automatically)
+
+### Code Cleanup
+- Remove all `console.log()` statements (except in debug files)
+- Remove trailing whitespace
+- Ensure newline at end of file
+- Sort imports alphabetically
+- Remove unused imports (after confirmation)
+
+### TypeScript Enforcement
+- Flag `any` type → suggest `unknown` or specific type
+- Flag `var` keyword → suggest `const` or `let`
+- Require type annotations on function parameters
+- Require return type annotations on exported functions
+- Flag missing null checks
+- Flag bare `throw` statements without context
+
+### Security Warnings
+- Flag hardcoded API keys, tokens, passwords
+- Flag direct env variable access (use import instead)
+- Flag unescaped user input in templates
+- Flag missing CSRF token in forms
+- Flag missing input validation
+- Flag `dangerouslySetInnerHTML` or `innerHTML`
+
+### Accessibility Checks
+- Flag `<button>` without text or aria-label
+- Flag `<img>` without alt text
+- Flag missing form labels
+- Flag low color contrast (flag for manual review)
+- Flag missing ARIA attributes on interactive elements
+
+---
+
+## Code Style Rules
+
+### Naming Conventions
+- Components: PascalCase (e.g., `ContactForm`, `FormInput`)
+- Functions: camelCase (e.g., `handleSubmit`, `validateEmail`)
+- Constants: UPPER_SNAKE_CASE (e.g., `MAX_EMAIL_LENGTH`)
+- Private methods: prefix with _ (e.g., `_privateMethod`)
+- Types/Interfaces: PascalCase (e.g., `FormState`, `User`)
+
+### File Organization
+- 1 component per file
+- Tests in `.test.ts` or `.spec.ts` files
+- Types/interfaces in `.d.ts` or top of file
+- Styles after JSX/TSX
+- Constants before functions
+- Exports at end of file
+
+### Comments Required For:
+- Complex algorithms (why, not what)
+- Edge cases and workarounds
+- External API behavior
+- Performance optimizations
+- Security-sensitive code
+- TODO items (must include ticket reference)
+
+### Comments Forbidden For:
+- Obvious code (what's on screen already)
+- Dead code (just delete it)
+- Commit messages in comments (use git)
+- Author info (use git blame)
+
+---
+
+## Performance Rules
+
+### Bundle Size
+- Flag if new dependency >50KB
+- Alert if total build >500KB gzipped
+- Suggest dynamic imports for large components
+
+### Runtime Performance
+- Flag direct DOM manipulation (use frameworks)
+- Flag nested loops (O(n²) complexity)
+- Flag missing debounce/throttle on input handlers
+- Flag unoptimized image sizes
+- Flag missing lazy loading on images
+
+### Memory
+- Flag event listeners without cleanup
+- Flag missing useEffect cleanup
+- Flag memory leak patterns (circular refs, etc)
+
+---
+
+## Security Rules (Strict)
+
+### Forbidden Patterns (Auto-Reject)
+- Hardcoded secrets in strings
+- Direct database connections in client code
+- Unvalidated user input in SQL/templates
+- Missing HTTPS enforcement
+- Missing CORS headers
+- Eval or Function constructor usage
+- Unescaped template literals in HTML
+
+### Required Patterns
+- All forms have validation
+- All user input sanitized
+- All API calls use HTTPS
+- All secrets use environment variables
+- All endpoints require authentication (if applicable)
+- CSRF tokens on state-changing requests
+
+---
+
+## Testing Rules
+
+### Required Test Coverage
+- All exported functions tested
+- Happy path + error cases
+- Edge cases documented
+- Integration tests for critical flows
+
+### Test File Naming
+- `src/utils/helpers.test.ts` for `src/utils/helpers.ts`
+- `src/components/Button.test.tsx` for `src/components/Button.tsx`
+
+---
+
+## Git & Commit Rules
+
+### Branch Naming
+- Feature: `feature/description` (lowercase, hyphens)
+- Fix: `fix/issue-description`
+- Chore: `chore/task-description`
+- Docs: `docs/update-description`
+
+### Commit Message Format
+- Format: `[TYPE] Scope: Description`
+- Types: feat, fix, refactor, perf, docs, test, chore, security
+- Max 72 characters
+- Include ticket reference if applicable: `#TICKET-123`
+
+### Commit Examples
+```
+✅ [feat] ContactForm: Add email validation
+✅ [fix] Hero: Fix image scaling on mobile
+✅ [docs] README: Update setup instructions
+✅ [security] Forms: Add CSRF protection (#SEC-42)
+```
+
+---
+
+## Environment Variables
+
+### Rules
+- All secrets in `.env` (never in code)
+- `.env` must be in `.gitignore`
+- Public vars prefixed with `PUBLIC_` (if using Astro)
+- Private vars prefixed with server context (Node-only)
+- `.env.example` documents all vars (without values)
+
+### Validation
+- Flag missing required env vars at startup
+- Flag undefined env var access at compile time
+- Flag `.env` changes not reflected in `.env.example`
+
+---
+
+## Form Validation Rules
+
+### Client-Side (Required)
+- HTML5 validation attributes (required, type, pattern, minlength, maxlength)
+- Real-time validation feedback
+- Error messages clear and actionable
+- Disabled submit button until valid (optional)
+
+### Server-Side (If backend exists)
+- Validate all inputs (don't trust client)
+- Rate limiting (max 10 submissions/minute per IP)
+- Email verification (optional: confirmation email)
+- CSRF token validation (if forms modify state)
+
+### Field Rules
+```
+Email:
+- Required
+- Format: xxx@xxx.xxx
+- Max 254 chars (RFC standard)
+- Autocomplete: email
+
+Name:
+- Required
+- Min 2 chars, Max 50-100 chars
+- Autocomplete: name or given-name/family-name
+
+Message:
+- Required
+- Min 10 chars, Max 5000 chars
+- Autocomplete: off
+
+Phone (if applicable):
+- Required/Optional (business-specific)
+- Format: (123) 456-7890
+- Inputmode: tel
+```
+
+---
+
+## Accessibility Rules (WCAG 2.1 AA minimum)
+
+### Required
+- Keyboard navigation (Tab through all interactive elements)
+- Color contrast ratio 4.5:1 (text), 3:1 (large text)
+- Focus indicators visible
+- All images have alt text
+- Form labels associated with inputs
+- Error messages linked to form fields
+
+### Components
+- Buttons: Have text or aria-label
+- Links: Visible and understandable
+- Forms: Fieldsets and legends for grouping
+- Images: Alt text meaningful (not "image of")
+- Videos: Captions and transcript
+- Icons: aria-label or title attribute
+
+---
+
+## Deployment Rules
+
+### Pre-Deployment Checks
+- [ ] TypeScript: 0 errors
+- [ ] npm audit: 0 vulnerabilities
+- [ ] Build size: <500KB gzipped
+- [ ] No console.logs left
+- [ ] No secrets in code
+- [ ] All tests passing
+- [ ] Lighthouse >90
+
+### Deployment Checklist
+- [ ] Branch reviewed and approved
+- [ ] All CI checks passing
+- [ ] Staging tested
+- [ ] Rollback plan documented
+- [ ] Team notified
+
+### Post-Deployment (First 24h)
+- [ ] Monitor Sentry for errors
+- [ ] Check Dynatrace metrics
+- [ ] Verify forms working
+- [ ] No spike in error rate
+- [ ] Document any issues
+
+---
+
+## Monitoring & Observability
+
+### Required Integrations
+- Sentry: Error tracking (DSN configured)
+- Dynatrace: Performance monitoring (baseline recorded)
+- Analytics: User behavior tracking (if applicable)
+
+### Logging Standards
+- Log level: ERROR, WARN, INFO, DEBUG
+- Never log sensitive data (emails, tokens, passwords)
+- Include context (component, function, timestamp)
+- Structured logging (JSON format preferred)
+
+### Alerting
+- Critical errors: Immediate alert
+- Performance >1.5x baseline: Alert
+- Error rate >5%: Alert
+- Form failures >5%: Alert
+
+---
+
+## Documentation Rules
+
+### README Required Sections
+- Project description
+- Setup instructions
+- Environment variables
+- Build/run commands
+- Deployment steps
+- Troubleshooting
+
+### Code Documentation
+- JSDoc on all exported functions
+- Component prop types documented
+- Complex logic explained
+- Edge cases documented
+- Breaking changes noted
+
+### Component Documentation
+```astro
+/**
+ * ComponentName - Brief description
+ *
+ * @param {type} paramName - Description
+ * @returns {type} Description
+ *
+ * @example
+ * <Component param="value" />
+ */
+```
+
+---
+
+## Quality Gates (Non-Negotiable)
+
+| Metric | Threshold | Consequence |
+|--------|-----------|-------------|
+| TypeScript | 0 errors | Blocks deployment |
+| Security audit | 0 critical | Blocks deployment |
+| Build | Succeeds | Blocks deployment |
+| Type coverage | >95% | Blocks merge |
+| ESLint | Passes | Blocks merge |
+| Performance | >90 Lighthouse | Review required |
+
+---
+
+## When Cursor Suggests Changes
+
+**Auto-apply** (safe):
+- Remove unused imports
+- Fix TypeScript errors
+- Add missing semicolons
+- Format code
+
+**Ask first** (review suggested changes):
+- Remove console.logs
+- Rename variables
+- Extract functions
+- Add error handling
+- Flag security issues
+
+**Discuss** (don't auto-apply):
+- Major refactors
+- Architecture changes
+- Performance optimizations
+- Breaking changes
+
+---
+
+## Common Patterns
+
+### Form Handling
+```astro
+<FormInput
+  type="email"
+  label="Email"
+  name="email"
+  required={true}
+  maxlength="254"
+  autocomplete="email"
+  inputmode="email"
+/>
+```
+
+### Error Handling
+```typescript
+try {
+  await submitForm(data);
+} catch (error) {
+  // Log with context
+  console.error("Form submission failed:", { error, data });
+  // Show user-friendly message
+  setError("Failed to submit form. Please try again.");
+  // Track in Sentry
+  Sentry.captureException(error);
+}
+```
+
+### Performance Optimization
+```typescript
+// Debounce expensive operations
+const debouncedSearch = debounce((query) => {
+  searchAPI(query);
+}, 500);
+
+// Lazy load images
+<img loading="lazy" src={imageUrl} alt={description} />
+
+// Dynamic imports for large components
+const HeavyComponent = lazy(() => import('./HeavyComponent'));
+```
+
+---
+
+**Active**: ✅
+**Enforced**: Cursor IDE + GitHub Actions
+**Last Updated**: November 1, 2025
