@@ -13,7 +13,7 @@ const seo = {
 
 <Layout seo={seo}>
 	<!-- Service Schemas for Services Page -->
-	<script type="application/ld+json" set:html={JSON.stringify({
+	<!-- Service Schema removed as per user request
 		'@context': 'https://schema.org',
 		'@type': 'Service',
 		serviceType: 'AI Sherpa Services',
@@ -31,8 +31,8 @@ const seo = {
 			availability: 'https://schema.org/InStock',
 			priceCurrency: 'USD'
 		}
-	})}></script>
-	<script type="application/ld+json" set:html={JSON.stringify({
+-->
+	<!-- Service Schema removed as per user request
 		'@context': 'https://schema.org',
 		'@type': 'Service',
 		serviceType: 'Workflow Automation',
@@ -51,7 +51,7 @@ const seo = {
 			priceCurrency: 'USD'
 		}
 	})}></script>
-	<script type="application/ld+json" set:html={JSON.stringify({
+	<!-- Service Schema removed as per user request
 		'@context': 'https://schema.org',
 		'@type': 'Service',
 		serviceType: 'Small Business AI Integration',
@@ -288,12 +288,17 @@ const seo = {
 	.service-column {
 		text-align: left;
 	}
-	.service-icon {
-		font-size: 3rem;
-		color: var(--theme-primary);
-		margin-bottom: 1rem;
-		text-align: center;
-	}
+		.service-icon {
+			font-size: 3rem;
+			color: var(--theme-primary);
+			margin-bottom: 1rem;
+			text-align: left; /* Align left for mobile-first single column */
+		}
+		@media (min-width: 768px) {
+			.service-icon {
+				text-align: center; /* Center for multi-column desktop */
+			}
+		}
 	.service-list {
 		margin-top: 1.5rem;
 		padding-left: 1.5rem;
@@ -314,12 +319,17 @@ const seo = {
 	.process-section h2 {
 		margin-bottom: 0.5rem;
 	}
-	.process-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		gap: 2rem;
-		margin-top: 3rem;
-	}
+		.process-grid {
+			display: grid;
+			grid-template-columns: 1fr; /* Mobile-first: 1 column */
+			gap: 2rem;
+			margin-top: 3rem;
+		}
+		@media (min-width: 768px) {
+			.process-grid {
+				grid-template-columns: repeat(4, 1fr);
+			}
+		}
 	.process-step {
 		text-align: center;
 	}
@@ -345,12 +355,17 @@ const seo = {
 	}
 
 	/* Value Grid */
-	.value-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-		gap: 2rem;
-		margin-top: 2rem;
-	}
+		.value-grid {
+			display: grid;
+			grid-template-columns: 1fr; /* Mobile-first: 1 column */
+			gap: 2rem;
+			margin-top: 3rem;
+		}
+		@media (min-width: 640px) {
+			.value-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
 	.value-item {
 		text-align: center;
 	}
@@ -378,12 +393,17 @@ const seo = {
 	.philosophy-section h2 {
 		margin-bottom: 0.5rem;
 	}
-	.philosophy-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		gap: 2rem;
-		margin-top: 3rem;
-	}
+		.philosophy-grid {
+			display: grid;
+			grid-template-columns: 1fr; /* Mobile-first: 1 column */
+			gap: 2rem;
+			margin-top: 3rem;
+		}
+		@media (min-width: 768px) {
+			.philosophy-grid {
+				grid-template-columns: repeat(4, 1fr);
+			}
+		}
 	.philosophy-card {
 		padding: 2rem;
 		background: var(--theme-surface-1);
@@ -406,14 +426,20 @@ const seo = {
 	}
 
 	/* CTA Section */
-	.cta-section {
-		margin: var(--section-margin) auto;
-		padding: 4rem 2rem;
-		text-align: center;
-		background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-primary-hover) 100%);
-		border-radius: var(--theme-shape-radius);
-		color: white;
-	}
+		.cta-section {
+			margin: var(--section-margin) auto;
+			padding: 2rem 1rem; /* Mobile-first padding */
+			text-align: center;
+			background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-primary-hover) 100%);
+			border-radius: 0.75rem; /* Sharper corners for mobile */
+			color: white;
+		}
+		@media (min-width: 768px) {
+			.cta-section {
+				padding: 4rem 2rem;
+				border-radius: var(--theme-shape-radius);
+			}
+		}
 	.cta-section h2 {
 		color: white;
 		margin-bottom: 1rem;
@@ -423,12 +449,18 @@ const seo = {
 		margin-bottom: 2rem;
 		opacity: 0.95;
 	}
-	.cta-buttons {
-		display: flex;
-		gap: 1rem;
-		justify-content: center;
-		flex-wrap: wrap;
-	}
+		.cta-buttons {
+			display: flex;
+			flex-direction: column; /* Stack buttons on mobile */
+			gap: 1rem;
+			justify-content: center;
+			flex-wrap: wrap;
+		}
+		@media (min-width: 640px) {
+			.cta-buttons {
+				flex-direction: row; /* Side-by-side on larger screens */
+			}
+		}
 	.cta-button {
 		display: inline-block;
 		padding: 1rem 2rem;
