@@ -1,46 +1,270 @@
 ---
-import { TextSection } from '@components/odyssey-theme';
 import Layout from '../../layouts/Page.astro';
-import HeroSection from '../../components/sections/heros/HeroSection.astro';
+import { Container } from '@components/odyssey-theme';
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+
+// Local image import for the hero section
+import EarthHero from '/public/assets/images/earth-hero.jpg';
 
 const seo = {
-	title: 'About | Bespoke Ethos',
-	description: 'About Upton Rand - AI Trainer, Practitioner, and Sherpa',
+	title: 'About Bespoke Ethos | Our Philosophy on AI and Automation',
+	description: 'Learn about Bespoke Ethos, our human-centered philosophy, and our commitment to delivering auditable, maintainable AI solutions for small businesses.',
 };
 ---
 
-<Layout {seo}>
-	<HeroSection>
-		<div slot="text-container">
-			<h1>About Upton Rand</h1>
-			<p>
-				<strong>AI Trainer, Practitioner, Sherpa</strong> Over a decade of hands-on experience training major models including ChatGPT, Claude, and Copilot; translated research-grade techniques into business-ready automation.
-			</p>
-		</div>
-    <picture slot="image-container">
-      <img
-        src="/assets/images/home/classic-hero.jpg"
-        alt="Astro Odyssee"
-        id="home-hero-image"
-      />
-    </picture>
-	</HeroSection>
-  <TextSection narrow>
-    <p>
-      <strong>From Curiosity to Commercial Results</strong> Witnessed AI evolve from brittle prototypes to reliable, creative partners and applied that maturity to replace multiple roles with streamlined workflows.
-    </p>
-    <p>
-      <strong>Operator-First Expertise</strong> Built practical automations that solved real business problems, not academic puzzles, and taught teams to operate confidently with AI in production.
-    </p>
-    
-    <p>
-      <strong>Human-Centered Technologist</strong> Trains models and people in tandem so tools behave predictably and owners regain time, focus, and creative control.
-    </p>
-    <p>
-      <strong>Bespoke Ethos — AI for Small Business</strong> Transforms AI capability into usable, auditable workflows that small teams can run and maintain without an ML PhD.
-    </p>
-    <p>
-      <strong>Equity-Minded Pricing</strong> Offers accessible entry and a 20% discount for LGBTQ businesses to reduce barriers to innovation.
-    </p>
-  </TextSection>
+<Layout seo={seo}>
+	<Container>
+		<!-- Hero Section: Earth Hero Image -->
+		<section class="about-hero__section">
+			<div class="about-hero__image">
+				<Image
+					src={EarthHero}
+					alt="Minimalist building with a palm tree, representing the clean, bespoke, and grounded ethos of Bespoke Ethos."
+					width={1200}
+					height={800}
+					format="webp"
+					quality={85}
+					class="film-grain"
+				/>
+			</div>
+			<div class="about-hero__text">
+				<h1>The Ethos of Bespoke: Built for Human Ingenuity</h1>
+				<p class="hero-subtitle">
+					We believe AI should augment human intelligence, not replace it. Our mission is to give small business owners back their most valuable resource: **time**.
+				</p>
+			</div>
+		</section>
+
+		<!-- Core Philosophy Section -->
+		<section class="philosophy__section">
+			<h2>Our Core Philosophy</h2>
+			<div class="philosophy__grid">
+				<div class="philosophy__item">
+					<Icon name="mdi:account-group-outline" />
+					<h3>Human-Centered Augmentation</h3>
+					<p>AI is a force multiplier for human judgment, not a substitute. We build systems that amplify your team's existing expertise.</p>
+				</div>
+				<div class="philosophy__item">
+					<Icon name="mdi:clock-fast" />
+					<h3>Time is the Ultimate ROI</h3>
+					<p>The highest-value outcome is restored owner time to think, sell, and create. Our solutions pay for themselves by automating busywork.</p>
+				</div>
+				<div class="philosophy__item">
+					<Icon name="mdi:map-marker-outline" />
+					<h3>Cleveland Pride, Global Reach</h3>
+					<p>Founded by small business owners who understand local challenges, we bring world-class AI solutions with a local, human touch.</p>
+				</div>
+				<div class="philosophy__item">
+					<Icon name="mdi:shield-check-outline" />
+					<h3>Auditable & Maintainable</h3>
+					<p>We ensure clear handoffs, audit trails, and governance, keeping control firmly in your hands. No black boxes, just transparent systems.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Value Proposition / Sherpa Section -->
+		<section class="sherpa__section">
+			<div class="sherpa__content">
+				<h2>Your AI Sherpa</h2>
+				<p>
+					For those without an extensive AI background, we act as your guide. We cut through the noise of the AI landscape, integrating various tools into comprehensive, efficient workflows. We are the practitioners who built the AI our competition sells, and we bring that deep, practical knowledge directly to your business.
+				</p>
+				<a href="/services" class="cta-button cta-button--primary">Explore Our Services</a>
+			</div>
+			<div class="sherpa__image">
+				<Image
+					src="/assets/images/service_tool_as_proxy.webp"
+					alt="Abstract image representing a tool as a proxy for human effort."
+					width={600}
+					height={400}
+					format="webp"
+					quality={85}
+				/>
+			</div>
+		</section>
+
+		<!-- CTA Section -->
+		<section class="cta__section">
+			<h2>Ready to Reclaim Your Time?</h2>
+			<p>Schedule a free AI assessment to see how bespoke automation can transform your business.</p>
+			<div class="cta__buttons">
+				<a href="/company/contact" class="cta-button cta-button--primary">Get Started</a>
+			</div>
+		</section>
+	</Container>
 </Layout>
+
+<style>
+	/* Global Styles from index.astro for consistency */
+	.cta-button--primary {
+		/* Assuming this style is defined in a global CSS or component, but defining a placeholder for clarity */
+		background-color: var(--theme-primary);
+		color: var(--theme-on-primary);
+		padding: 0.75rem 1.5rem;
+		border-radius: var(--theme-shape-radius);
+		text-decoration: none;
+		font-weight: 600;
+		display: inline-block;
+		transition: background-color 0.2s ease;
+	}
+	.cta-button--primary:hover {
+		background-color: var(--theme-primary-hover);
+	}
+
+	/* About Hero Section */
+	.about-hero__section {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		padding: 4rem 0;
+		margin: var(--section-margin) auto;
+	}
+	.about-hero__image {
+		order: -1; /* Image first on mobile */
+	}
+	.about-hero__image img {
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+		border-radius: var(--theme-shape-radius);
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+		/* Apply image styling preferences */
+		filter: grayscale(1) sepia(0.1) brightness(0.9);
+		transition: filter 0.7s ease;
+	}
+	.about-hero__image img:hover {
+		filter: grayscale(0);
+	}
+	.about-hero__text {
+		max-width: 40rem;
+	}
+	.about-hero__text h1 {
+		font-size: clamp(2rem, 5vw, 3rem);
+		line-height: 1.1;
+		margin-bottom: 1rem;
+	}
+	.hero-subtitle {
+		font-size: 1.25rem;
+		line-height: 1.6;
+		color: var(--theme-text-secondary);
+	}
+
+	@media (min-width: 768px) {
+		.about-hero__section {
+			flex-direction: row;
+			align-items: center;
+			gap: 4rem;
+		}
+		.about-hero__image {
+			order: 1; /* Image second on desktop */
+			flex: 1;
+		}
+		.about-hero__text {
+			flex: 1;
+			order: 0; /* Text first on desktop */
+		}
+	}
+
+	/* Core Philosophy Section */
+	.philosophy__section {
+		padding: 4rem 0;
+		text-align: center;
+	}
+	.philosophy__section h2 {
+		margin-bottom: 3rem;
+	}
+	.philosophy__grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+	}
+	@media (min-width: 640px) {
+		.philosophy__grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+	@media (min-width: 1024px) {
+		.philosophy__grid {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+	.philosophy__item {
+		padding: 1.5rem;
+		border-radius: var(--theme-shape-radius);
+		background: var(--theme-surface-1);
+		text-align: left;
+	}
+	.philosophy__item svg {
+		font-size: 2.5rem;
+		color: var(--theme-primary);
+		margin-bottom: 1rem;
+	}
+	.philosophy__item h3 {
+		margin-bottom: 0.5rem;
+	}
+	.philosophy__item p {
+		color: var(--theme-text-secondary);
+	}
+
+	/* Sherpa Section */
+	.sherpa__section {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		padding: 4rem 0;
+		align-items: center;
+	}
+	.sherpa__content {
+		max-width: 40rem;
+	}
+	.sherpa__content h2 {
+		margin-bottom: 1rem;
+	}
+	.sherpa__content p {
+		margin-bottom: 1.5rem;
+		font-size: 1.125rem;
+		line-height: 1.6;
+	}
+	.sherpa__image img {
+		width: 100%;
+		height: auto;
+		max-width: 400px;
+		border-radius: var(--theme-shape-radius);
+		/* Apply image styling preferences */
+		filter: grayscale(1) sepia(0.1) brightness(0.9);
+		transition: filter 0.7s ease;
+	}
+	.sherpa__image img:hover {
+		filter: grayscale(0);
+	}
+
+	@media (min-width: 768px) {
+		.sherpa__section {
+			flex-direction: row;
+			gap: 4rem;
+		}
+		.sherpa__content {
+			flex: 1;
+		}
+		.sherpa__image {
+			flex: 1;
+			display: flex;
+			justify-content: center;
+		}
+	}
+
+	/* CTA Section */
+	.cta__section {
+		padding: 4rem 0;
+		text-align: center;
+	}
+	.cta__section h2 {
+		margin-bottom: 1rem;
+	}
+	.cta__section p {
+		font-size: 1.25rem;
+		margin-bottom: 2rem;
+		color: var(--theme-text-secondary);
+	}
+</style>
