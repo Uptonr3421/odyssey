@@ -28,7 +28,6 @@
 		"prettier-plugin-astro": "^0.0.12"
 	},
 	"dependencies": {
-		"@astrojs/image": "^0.18.0",
 		"typescript": "^5.9.3"
 	}
 }

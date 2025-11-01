@@ -3,11 +3,11 @@ import { defineConfig } from 'astro/config';
 import mdx from "@astrojs/mdx";
 import icon from "astro-icon";
 import lit from "@astrojs/lit";
-import image from "@astrojs/image";
+
 
 // https://astro.build/config
 export default defineConfig({
   // site: 'https://bespokeethos.com/', // Removed for privacy/schema concerns
   sitemap: false, // Disabled as per user request (privacy/schema concerns)
-  integrations: [mdx(), lit(), icon(), image({ serviceEntryPoint: '@astrojs/image/sharp' })], // Added image optimization
+  integrations: [mdx(), lit(), icon()], // Added image optimization
 });
